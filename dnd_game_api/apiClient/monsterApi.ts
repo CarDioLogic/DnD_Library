@@ -26,3 +26,40 @@ export async function fetchMonstersByType(type: string) {
     throw error;
   }
 }
+
+export async function fetchMonsterDetails(index: string, signal?: AbortSignal) {
+  const query = `
+    query Monster($index: String!) {
+      monster(index: $index) {
+        alignment
+        charisma
+        constitution
+        dexterity
+        intelligence
+        strength
+        wisdom
+        type
+        xp
+        size
+        name
+        hit_points
+        hit_dice
+        image
+        index
+      }
+    }
+  `;
+
+  const response = await axios.post(
+    url,
+    {
+      query,
+      variables: { index },
+    },
+    {
+      signal,
+    }
+  );
+
+  return response.data.data.monster;
+}

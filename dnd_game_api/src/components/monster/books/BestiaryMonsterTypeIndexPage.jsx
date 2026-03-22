@@ -3,10 +3,13 @@ import Page from "../../flipbook/Page";
 export default function BestiaryMonsterTypeIndexPage({
   monsters,
   monsterType,
-  number,
+  pageNumber,
+  currentPage
 }) {
   return (
-    <Page number={number}>
+    <Page 
+    currentPage={currentPage}
+    pageNumber={pageNumber}>
       <div>
         <h2 className="font">{monsterType}'s:</h2>
         <ul>

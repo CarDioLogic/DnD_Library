@@ -3,11 +3,12 @@ import { useEffect, useState } from "react";
 import { MONSTER_TYPES } from "../../../../Data/MonsterTypes";
 import { fetchMonstersByType } from "../../../../apiClient/monsterApi";
 import BestiaryMonsterTypeIndexPage from "./BestiaryMonsterTypeIndexPage";
+import BestiaryMonsterDetailsPage from "./BestiaryMonsterDetailsPage";
 
 export default function BestiaryBook() {
   const [monsters, setMonsters] = useState([]);
   const [monstersIndexPages, setMonstersIndexPages] = useState([]);
-  let pageCount = 0;
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     async function loadMonsters() {
@@ -57,8 +58,12 @@ export default function BestiaryBook() {
     return allPages;
   }
 
+  let pageCount = -1;
+
   return (
-    <BookFrame>
+    <BookFrame
+      setCurrentPage={setCurrentPage}
+    >
       {monstersIndexPages.map((pageMonsters) => {
         pageCount += 1;
 
@@ -69,7 +74,8 @@ export default function BestiaryBook() {
           >
             <h1 className="underline">Index:</h1>
             <BestiaryMonsterTypeIndexPage
-              number={pageCount}
+              currentPage={currentPage}
+              pageNumber={pageCount}
               monsters={pageMonsters}
               monsterType={pageMonsters[0]?.type || "Unknown"}
             />
@@ -85,9 +91,11 @@ export default function BestiaryBook() {
             key={`monster-page-${monster.index}`}
             className="demoPage border border-gray-300 shadow-inner p-6 rounded-lg bg-gray-200"
           >
-            <h1>Monster details page</h1>
-            <h2>{monster.name}</h2>
-            <p>Page number: {pageCount}</p>
+            <BestiaryMonsterDetailsPage
+              monsterIndex={monster.index}
+              currentPage={currentPage}
+              pageNumber={pageCount}
+            />
           </div>
         );
       })}
