@@ -9,6 +9,7 @@ export default function BestiaryBook() {
   const [monsters, setMonsters] = useState([]);
   const [monstersIndexPages, setMonstersIndexPages] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [flipToPage, setFlipToPage] = useState(0);
 
   useEffect(() => {
     async function loadMonsters() {
@@ -33,21 +34,25 @@ export default function BestiaryBook() {
   function paginateMonsters(monsters, maxItemsPerPage = 10) {
     let allPages = [];
     let currentPageItems = [];
-    let counter = 0;
+    let resetCounter = 0;
+    let monsterNbr = 0;
     let previousMonsterType = "";
 
     for (let item of monsters) {
+      monsterNbr++;
       if (
-        counter >= maxItemsPerPage ||
+        resetCounter >= maxItemsPerPage ||
         (previousMonsterType && previousMonsterType !== item.type)
       ) {
         allPages.push(currentPageItems);
         currentPageItems = [];
-        counter = 0;
+        resetCounter = 0;
       }
 
-      currentPageItems.push(item);
-      counter++;
+      currentPageItems.push({...item,
+        monsterNbr
+      });
+      resetCounter++;
       previousMonsterType = item.type;
     }
 
@@ -58,11 +63,18 @@ export default function BestiaryBook() {
     return allPages;
   }
 
+  const flipToPageHandler = (monsterIndex) => {
+    const nbrIndexPages = monstersIndexPages.length;
+    const monsterPage = monsterIndex + nbrIndexPages - 3; //offset because clicking on index also triggers a onclick page flip
+    setFlipToPage(monsterPage);
+  };
+
   let pageCount = -1;
 
   return (
     <BookFrame
       setCurrentPage={setCurrentPage}
+      flipToPage={flipToPage}
     >
       {monstersIndexPages.map((pageMonsters) => {
         pageCount += 1;
@@ -74,6 +86,7 @@ export default function BestiaryBook() {
           >
             <h1 className="underline">Index:</h1>
             <BestiaryMonsterTypeIndexPage
+              flipToPageHandler={flipToPageHandler}
               currentPage={currentPage}
               pageNumber={pageCount}
               monsters={pageMonsters}

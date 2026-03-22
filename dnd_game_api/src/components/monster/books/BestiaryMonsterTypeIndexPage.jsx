@@ -4,7 +4,8 @@ export default function BestiaryMonsterTypeIndexPage({
   monsters,
   monsterType,
   pageNumber,
-  currentPage
+  currentPage,
+  flipToPageHandler
 }) {
   return (
     <Page 
@@ -14,7 +15,11 @@ export default function BestiaryMonsterTypeIndexPage({
         <h2 className="font">{monsterType}'s:</h2>
         <ul>
           {monsters.map((monster) => (
-            <li key={monster.index}>
+            <li className="cursor-pointer" key={monster.index} 
+                onClick={(e) => {
+                    e.stopPropagation();
+                    flipToPageHandler(monster.monsterNbr)
+                }}>
               {monster.index}
             </li>
           ))}

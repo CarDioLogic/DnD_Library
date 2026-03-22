@@ -1,7 +1,7 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useCallback } from 'react';
 import HTMLFlipBook from 'react-pageflip';
 
-export default function BookFrame({ children, setCurrentPage }) {
+export default function BookFrame({ children, setCurrentPage, flipToPage }) {
   const book = useRef(null);
 
   useEffect(() => {
@@ -15,25 +15,57 @@ export default function BookFrame({ children, setCurrentPage }) {
       if (event.key === 'ArrowRight') {
         book.current.pageFlip().flipNext();
       }
+
+      if (event.key === '1') {
+        book.current.pageFlip().flip(0);
+      }
+
+      if (event.key === '0') {
+        const pageFlip = book.current.pageFlip();
+        const lastPageIndex = pageFlip.getPageCount() - 1;
+
+        pageFlip.flip(lastPageIndex);
+      }
     };
 
-
     document.addEventListener('keydown', handleKeyDown);
-        return () => {
-        document.removeEventListener('keydown', handleKeyDown);
-        };
-    }, []);
 
-    const onFlip = useCallback((e) => {
-        let currentPage = e.data + 1; //offset correctly current page
-        console.log("current page", currentPage);
-        setCurrentPage(e.data);
-    }, [setCurrentPage]);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!book.current || flipToPage == null) return;
+    if(flipToPage <= 0 || flipToPage >= book.current.pageFlip().getPageCount()) {
+        console.warn("flipToPage is out of bounds: ", flipToPage);
+        return;
+    }
+
+    book.current.pageFlip().flip(flipToPage);
+        console.log("flip to ", flipToPage )
+
+    // or:
+    // book.current.pageFlip().turnToPage(flipToPage);
+  }, [flipToPage]);
+
+  const onFlip = useCallback(
+    (e) => {
+      const currentPage = e.data; // 0-based
+      console.log('current page', currentPage);
+      setCurrentPage(currentPage);
+    },
+    [setCurrentPage]
+  );
 
   return (
-    <HTMLFlipBook 
-        onFlip={onFlip}
-        ref={book} width={300} height={500}>
+    <HTMLFlipBook
+      showCover={true}
+      onFlip={onFlip}
+      ref={book}
+      width={300}
+      height={500}
+    >
       {children}
     </HTMLFlipBook>
   );
