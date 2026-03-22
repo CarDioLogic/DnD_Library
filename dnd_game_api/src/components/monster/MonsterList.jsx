@@ -8,6 +8,7 @@ export default function MonsterList({ monsterType }) {
     useEffect(() => {
         console.log("FETCHING MONSTERS OF TYPE:", CREATURE_TO_HABITATS);
         fetchMonstersByType(monsterType).then((data) => {
+          console.log(data);
             setMonsters(data);
         }).catch((error) => {
             //check api availabitlity component
