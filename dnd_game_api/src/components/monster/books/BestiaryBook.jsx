@@ -1,35 +1,40 @@
 import BookFrame from "../../flipbook/BookFrame";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { MONSTER_TYPES } from "../../../../Data/MonsterTypes";
 import { fetchMonstersByType } from "../../../../apiClient/monsterApi";
 import BestiaryMonsterTypeIndexPage from "./BestiaryMonsterTypeIndexPage";
 import BestiaryMonsterDetailsPage from "./BestiaryMonsterDetailsPage";
+import BestiaryBookFrontCover from "./BestiaryBookFrontCover";
+import BestiaryBookBackCover from "./BestiaryBookBackCover";
+import Page from "../../flipbook/Page";
 
 export default function BestiaryBook() {
   const [monsters, setMonsters] = useState([]);
-  const [monstersIndexPages, setMonstersIndexPages] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [flipToPage, setFlipToPage] = useState(0);
+  const [loadingMonsters, setLoadingMonsters] = useState(false);
 
   useEffect(() => {
     async function loadMonsters() {
       let allMonsters = [];
+      setLoadingMonsters(true);
 
-      for (let mt of MONSTER_TYPES) {
-        const data = await fetchMonstersByType(mt);
-        allMonsters.push(...data);
+      try {
+        for (const mt of MONSTER_TYPES) {
+          const data = await fetchMonstersByType(mt);
+          allMonsters.push(...data);
+        }
+
+        setMonsters(allMonsters);
+      } catch (error) {
+        console.error("Failed to load monsters:", error);
+      } finally {
+        setLoadingMonsters(false);
       }
-
-      setMonsters(allMonsters);
     }
 
     loadMonsters();
   }, []);
-
-  useEffect(() => {
-    const pages = paginateMonsters(monsters, 10);
-    setMonstersIndexPages(pages);
-  }, [monsters]);
 
   function paginateMonsters(monsters, maxItemsPerPage = 10) {
     let allPages = [];
@@ -40,6 +45,7 @@ export default function BestiaryBook() {
 
     for (let item of monsters) {
       monsterNbr++;
+
       if (
         resetCounter >= maxItemsPerPage ||
         (previousMonsterType && previousMonsterType !== item.type)
@@ -49,9 +55,11 @@ export default function BestiaryBook() {
         resetCounter = 0;
       }
 
-      currentPageItems.push({...item,
-        monsterNbr
+      currentPageItems.push({
+        ...item,
+        monsterNbr,
       });
+
       resetCounter++;
       previousMonsterType = item.type;
     }
@@ -63,55 +71,49 @@ export default function BestiaryBook() {
     return allPages;
   }
 
+  const monstersIndexPages = useMemo(() => {
+    return paginateMonsters(monsters, 10);
+  }, [monsters]);
+
   const flipToPageHandler = (monsterIndex) => {
     const nbrIndexPages = monstersIndexPages.length;
-    const monsterPage = monsterIndex + nbrIndexPages - 3; //offset because clicking on index also triggers a onclick page flip
+    const monsterPage = monsterIndex + nbrIndexPages - 2; //extra page for the cover
     setFlipToPage(monsterPage);
   };
 
-  let pageCount = -1;
+  if (loadingMonsters) {
+    return <div>Loading bestiary...</div>;
+  }
 
   return (
     <BookFrame
+      key={`book-${monstersIndexPages.length}-${monsters.length}`}
       setCurrentPage={setCurrentPage}
       flipToPage={flipToPage}
     >
-      {monstersIndexPages.map((pageMonsters) => {
-        pageCount += 1;
+      <BestiaryBookFrontCover currentPage={currentPage} />
 
-        return (
-          <div
-            key={`index-page-${pageCount}`}
-            className="demoPage border border-gray-300 shadow-inner p-6 rounded-lg bg-gray-200"
-          >
-            <h1 className="underline">Index:</h1>
-            <BestiaryMonsterTypeIndexPage
-              flipToPageHandler={flipToPageHandler}
-              currentPage={currentPage}
-              pageNumber={pageCount}
-              monsters={pageMonsters}
-              monsterType={pageMonsters[0]?.type || "Unknown"}
-            />
-          </div>
-        );
-      })}
+      {monstersIndexPages.map((pageMonsters, index) => (
+        <BestiaryMonsterTypeIndexPage
+          key={`index-page-${index}`}
+          flipToPageHandler={flipToPageHandler}
+          currentPage={currentPage}
+          pageNumber={index + 1}
+          monsters={pageMonsters}
+          monsterType={pageMonsters[0]?.type || "Unknown"}
+        />
+      ))}
 
-      {monsters.map((monster) => {
-        pageCount += 1;
+      {monsters.map((monster, index) => (
+        <BestiaryMonsterDetailsPage
+          key={`monster-page-${monster.index}`}
+          monsterIndex={monster.index}
+          currentPage={currentPage}
+          pageNumber={monstersIndexPages.length + 1 + index}
+        />
+      ))}
 
-        return (
-          <div
-            key={`monster-page-${monster.index}`}
-            className="demoPage border border-gray-300 shadow-inner p-6 rounded-lg bg-gray-200"
-          >
-            <BestiaryMonsterDetailsPage
-              monsterIndex={monster.index}
-              currentPage={currentPage}
-              pageNumber={pageCount}
-            />
-          </div>
-        );
-      })}
+      <BestiaryBookBackCover currentPage={currentPage} />
     </BookFrame>
   );
 }

@@ -1,30 +1,41 @@
+import { forwardRef } from "react";
 import Page from "../../flipbook/Page";
 
-export default function BestiaryMonsterTypeIndexPage({
-  monsters,
-  monsterType,
-  pageNumber,
-  currentPage,
-  flipToPageHandler
-}) {
-  return (
-    <Page 
-    currentPage={currentPage}
-    pageNumber={pageNumber}>
-      <div>
-        <h2 className="font">{monsterType}'s:</h2>
-        <ul>
-          {monsters.map((monster) => (
-            <li className="cursor-pointer" key={monster.index} 
+const BestiaryMonsterTypeIndexPage = forwardRef(
+  (
+    { monsters, monsterType, pageNumber, currentPage, flipToPageHandler },
+    ref
+  ) => {
+    return (
+      <Page
+        ref={ref}
+        currentPage={currentPage}
+        pageNumber={pageNumber}
+      >
+        <div>
+          <h1 className="underline">Index:</h1>
+          <h2 className="font">{monsterType}'s:</h2>
+
+          <ul>
+            {monsters.map((monster) => (
+              <li
+                className="cursor-pointer"
+                key={monster.index}
                 onClick={(e) => {
-                    e.stopPropagation();
-                    flipToPageHandler(monster.monsterNbr)
-                }}>
-              {monster.index}
-            </li>
-          ))}
-        </ul>
-      </div>
-    </Page>
-  );
-}
+                  e.stopPropagation();
+                  flipToPageHandler(monster.monsterNbr);
+                }}
+              >
+                {monster.index}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </Page>
+    );
+  }
+);
+
+BestiaryMonsterTypeIndexPage.displayName = "BestiaryMonsterTypeIndexPage";
+
+export default BestiaryMonsterTypeIndexPage;

@@ -6,13 +6,17 @@ const Page = forwardRef(
       children,
       pageNumber,
       currentPage,
-      getPageContentFunc,
+      getPageContentFunc = null,
       className = "",
     },
     ref
   ) => {
     const [pageContent, setPageContent] = useState(children || null);
-    let shouldLoadPageData = (pageNumber - 1 == currentPage) || (pageNumber == currentPage) || (pageNumber + 1 == currentPage);
+
+    const shouldLoadPageData =
+      pageNumber - 1 === currentPage ||
+      pageNumber === currentPage ||
+      pageNumber + 1 === currentPage;
 
     useEffect(() => {
       let isMounted = true;
@@ -43,7 +47,7 @@ const Page = forwardRef(
       return () => {
         isMounted = false;
       };
-    }, [children, shouldLoadPageData]);
+    }, [children, shouldLoadPageData, getPageContentFunc]);
 
     return (
       <div
@@ -53,11 +57,12 @@ const Page = forwardRef(
         <div>{pageContent}</div>
 
         {pageNumber !== undefined && <p>Page number: {pageNumber}</p>}
-        {currentPage !== undefined && <p>Page Current: {currentPage}</p>}
-
+        {pageNumber !== undefined && <p>Page Current: {currentPage}</p>}
       </div>
     );
   }
 );
+
+Page.displayName = "Page";
 
 export default Page;

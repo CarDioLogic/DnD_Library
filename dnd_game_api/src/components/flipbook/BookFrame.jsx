@@ -1,7 +1,13 @@
 import { useEffect, useRef, useCallback } from 'react';
 import HTMLFlipBook from 'react-pageflip';
 
-export default function BookFrame({ children, setCurrentPage, flipToPage }) {
+export default function BookFrame({ children, 
+  setCurrentPage, 
+  flipToPage,
+  width = 300,
+  height = 500,
+  isHidden = false,
+ }) {
   const book = useRef(null);
 
   useEffect(() => {
@@ -42,6 +48,7 @@ export default function BookFrame({ children, setCurrentPage, flipToPage }) {
         return;
     }
 
+    console.log("Flipping to page ", flipToPage);
     book.current.pageFlip().flip(flipToPage);
         console.log("flip to ", flipToPage )
 
@@ -58,13 +65,16 @@ export default function BookFrame({ children, setCurrentPage, flipToPage }) {
     [setCurrentPage]
   );
 
+  console.log("BookFrame render: isHidden=", isHidden);
+  if(isHidden) return null;
+
   return (
     <HTMLFlipBook
       showCover={true}
       onFlip={onFlip}
       ref={book}
-      width={300}
-      height={500}
+      width={width}
+      height={height}
     >
       {children}
     </HTMLFlipBook>
