@@ -52,12 +52,15 @@ const Page = forwardRef(
     return (
       <div
         ref={ref}
-        className={`demoPage border border-gray-300 shadow-inner p-6 rounded-lg bg-gray-200 ${className}`}
+        className={`border border-gray-500 shadow-inner p-6 rounded-sm bg-book-page text-book-ink font-uncial relative ${className}`}
       >
-        <div>{pageContent}</div>
+        {pageContent}
 
-        {pageNumber !== undefined && <p>Page number: {pageNumber}</p>}
-        {pageNumber !== undefined && <p>Page Current: {currentPage}</p>}
+        {pageNumber !== undefined && 
+          <p className="absolute bottom-2 right-4 text-sm"
+            title={`User currently on page: ${currentPage}`}>
+            {pageNumber}
+          </p>}
       </div>
     );
   }

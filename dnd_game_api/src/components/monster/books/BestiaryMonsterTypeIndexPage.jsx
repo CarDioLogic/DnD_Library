@@ -13,20 +13,20 @@ const BestiaryMonsterTypeIndexPage = forwardRef(
         pageNumber={pageNumber}
       >
         <div>
-          <h1 className="underline">Index:</h1>
-          <h2 className="font">{monsterType}'s:</h2>
+          <h1 className="underline text-center mb-4">Index:</h1>
+          <h2 className="font-bold italic">{monsterType}'s:</h2>
 
-          <ul>
+          <ul className="ml-4 mt-2 space-y-1">
             {monsters.map((monster) => (
               <li
-                className="cursor-pointer"
+                className="cursor-pointer text-sm"
                 key={monster.index}
                 onClick={(e) => {
                   e.stopPropagation();
                   flipToPageHandler(monster.monsterNbr);
                 }}
               >
-                {monster.index}
+                {`${monster.monsterNbr}. ${monster.name}`}
               </li>
             ))}
           </ul>

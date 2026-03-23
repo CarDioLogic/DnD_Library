@@ -9,11 +9,13 @@ const BestiaryBookBackCover = forwardRef(
         ref={ref}
         currentPage={currentPage}
         pageNumber={pageNumber}
+        className=""    
       >
-        <h1 className="text-4xl font-bold mb-4">Bestiary</h1>
-        <p className="text-lg">
-          Thank you for exploring the Bestiary! We hope you found the information about various monsters insightful and engaging.
-        </p>
+        <div className="border h-full w-full flex flex-col items-center justify-center p-8">
+            <p className="text-lg text-center">
+            Thank you for exploring the Bestiary! We hope you found the information about various monsters insightful and engaging.
+            </p>
+        </div>
       </Page>
     );
   }

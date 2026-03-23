@@ -1,2 +1,12 @@
 
 @import "tailwindcss";
+
+/* fonts */
+/* links to fonts in index.html */
+
+@theme {
+  --font-uncial: "Uncial Antiqua", cursive;
+  --color-book-page: #f4ecd8;
+  --color-book-ink: #3b2f1e;
+  --color-book-border: #d6c7a1;
+}
