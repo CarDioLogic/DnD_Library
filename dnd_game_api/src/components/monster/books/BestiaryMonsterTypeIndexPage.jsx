@@ -3,7 +3,7 @@ import Page from "../../flipbook/Page";
 
 const BestiaryMonsterTypeIndexPage = forwardRef(
   (
-    { monsters, monsterType, pageNumber, currentPage, flipToPageHandler },
+    { monsters, monsterType, pageNumber, currentPage, flipToPageHandler, pagesPerMonster },
     ref
   ) => {
     return (
@@ -26,7 +26,7 @@ const BestiaryMonsterTypeIndexPage = forwardRef(
                   flipToPageHandler(monster.monsterNbr);
                 }}
               >
-                {`${monster.monsterNbr}. ${monster.name}`}
+                {`${(Math.round(monster.monsterNbr / pagesPerMonster))}. ${monster.name}`}
               </li>
             ))}
           </ul>

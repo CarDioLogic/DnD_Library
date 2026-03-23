@@ -5,7 +5,7 @@ import { baseApiUrl } from "../../../../Core/constants";
 import Icon from "../../general/Icon";
 import { ABILITIES } from "../../../../Data/Abilities";
 
-const BestiaryMonsterDetailsPage = forwardRef(
+const BestiaryMonsterGeneralDetailsPage = forwardRef(
   ({ monsterIndex, pageNumber, currentPage }, ref) => {
     const controllerRef = useRef(null);
 
@@ -104,12 +104,13 @@ const BestiaryMonsterDetailsPage = forwardRef(
         ref={ref}
         currentPage={currentPage}
         pageNumber={pageNumber}
+        pagePrefix={`${monsterIndex} - `}
         getPageContentFunc={getMonsterDetails}
       />
     );
   }
 );
 
-BestiaryMonsterDetailsPage.displayName = "BestiaryMonsterDetailsPage";
+BestiaryMonsterGeneralDetailsPage.displayName = "BestiaryMonsterGeneralDetailsPage";
 
-export default BestiaryMonsterDetailsPage;
+export default BestiaryMonsterGeneralDetailsPage;

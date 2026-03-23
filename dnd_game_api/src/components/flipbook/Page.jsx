@@ -4,6 +4,7 @@ const Page = forwardRef(
   (
     {
       children,
+      pagePrefix,
       pageNumber,
       currentPage,
       getPageContentFunc = null,
@@ -59,7 +60,7 @@ const Page = forwardRef(
         {pageNumber !== undefined && 
           <p className="absolute bottom-2 right-4 text-sm"
             title={`User currently on page: ${currentPage}`}>
-            {pageNumber}
+            {pagePrefix}{pageNumber}
           </p>}
       </div>
     );

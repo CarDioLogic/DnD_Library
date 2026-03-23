@@ -3,7 +3,8 @@ import { useEffect, useMemo, useState } from "react";
 import { MONSTER_TYPES } from "../../../../Data/MonsterTypes";
 import { fetchMonstersByType } from "../../../../apiClient/monsterApi";
 import BestiaryMonsterTypeIndexPage from "./BestiaryMonsterTypeIndexPage";
-import BestiaryMonsterDetailsPage from "./BestiaryMonsterDetailsPage";
+import BestiaryMonsterGeneralDetailsPage from "./BestiaryMonsterGeneralDetailsPage";
+import BestiaryMonsterActions from "./BestiaryMonsterActions";
 import BestiaryBookFrontCover from "./BestiaryBookFrontCover";
 import BestiaryBookBackCover from "./BestiaryBookBackCover";
 import Page from "../../flipbook/Page";
@@ -13,6 +14,7 @@ export default function BestiaryBook() {
   const [currentPage, setCurrentPage] = useState(1);
   const [flipToPage, setFlipToPage] = useState(0);
   const [loadingMonsters, setLoadingMonsters] = useState(false);
+  const pagesPerMonster = 2; //general details + actions
 
   useEffect(() => {
     async function loadMonsters() {
@@ -40,12 +42,10 @@ export default function BestiaryBook() {
     let allPages = [];
     let currentPageItems = [];
     let resetCounter = 0;
-    let monsterNbr = 0;
+    let monsterNbr = 1;
     let previousMonsterType = "";
 
     for (let item of monsters) {
-      monsterNbr++;
-
       if (
         resetCounter >= maxItemsPerPage ||
         (previousMonsterType && previousMonsterType !== item.type)
@@ -57,8 +57,9 @@ export default function BestiaryBook() {
 
       currentPageItems.push({
         ...item,
-        monsterNbr,
+        monsterNbr: monsterNbr,
       });
+      monsterNbr += pagesPerMonster; //each monster takes 2 pages
 
       resetCounter++;
       previousMonsterType = item.type;
@@ -77,7 +78,10 @@ export default function BestiaryBook() {
 
   const flipToPageHandler = (monsterIndex) => {
     const nbrIndexPages = monstersIndexPages.length;
-    const monsterPage = monsterIndex + nbrIndexPages - 1; //extra page for the cover
+
+    //each monster has 2 pages
+    const monsterPage = (monsterIndex + 1) + nbrIndexPages - 1; //extra page for the cover
+    console.log("Flipping to page:", monsterPage);
     setFlipToPage(monsterPage);
   };
 
@@ -109,17 +113,24 @@ export default function BestiaryBook() {
           pageNumber={index + 2}
           monsters={pageMonsters}
           monsterType={pageMonsters[0]?.type || "Unknown"}
+          pagesPerMonster={pagesPerMonster}
         />
       ))}
 
-      {monsters.map((monster, index) => (
-        <BestiaryMonsterDetailsPage
-          key={`monster-page-${monster.index}`}
+      {monsters.flatMap((monster, index) => [
+        <BestiaryMonsterGeneralDetailsPage
+          key={`monster-general-${monster.index}`}
           monsterIndex={monster.index}
           currentPage={currentPage}
-          pageNumber={monstersIndexPages.length + 2 + index}
+          pageNumber={monstersIndexPages.length + 2 + pagesPerMonster * index}
+        />,
+        <BestiaryMonsterActions
+          key={`monster-actions-${monster.index}`}
+          monsterIndex={monster.index}
+          currentPage={currentPage}
+          pageNumber={monstersIndexPages.length + 3 + pagesPerMonster * index}
         />
-      ))}
+      ])}
 
       <BestiaryBookBackCover currentPage={currentPage} />
     </BookFrame>
