@@ -1,7 +1,7 @@
 import axios from "axios";
-import { baseApiUrl } from "../Core/constants";
+import { baseGraphqlApiUrl } from "../Core/constants";
 
-const url = baseApiUrl + "/monsters";
+const url = baseGraphqlApiUrl + "/monsters";
 
 export async function fetchMonstersByType(type: string) {
   const query = `
@@ -31,21 +31,25 @@ export async function fetchMonsterDetails(index: string, signal?: AbortSignal) {
   const query = `
     query Monster($index: String!) {
       monster(index: $index) {
+        index
+        name
+        type
+        subtype
+        image
         alignment
+
         charisma
         constitution
         dexterity
         intelligence
         strength
         wisdom
-        type
+
+        challenge_rating
         xp
         size
-        name
         hit_points
         hit_dice
-        image
-        index
       }
     }
   `;

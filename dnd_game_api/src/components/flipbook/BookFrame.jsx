@@ -1,6 +1,6 @@
 import { useEffect, useRef, useCallback } from 'react';
 import HTMLFlipBook from 'react-pageflip';
-import { playPageFlip } from '../../../Core/soundplayer';
+import { playPageFlip2 } from '../../../Core/soundplayer';
 
 export default function BookFrame({ children, 
   setCurrentPage, 
@@ -62,7 +62,7 @@ export default function BookFrame({ children,
       const currentPage = e.data; // 0-based
       console.log('current page', currentPage);
       setCurrentPage(currentPage);
-      playPageFlip('page-flip.mp3');
+      playPageFlip2();
     },
     [setCurrentPage]
   );

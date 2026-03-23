@@ -72,7 +72,7 @@ export default function BestiaryBook() {
   }
 
   const monstersIndexPages = useMemo(() => {
-    return paginateMonsters(monsters, 10);
+    return paginateMonsters(monsters, 13);
   }, [monsters]);
 
   const flipToPageHandler = (monsterIndex) => {
@@ -92,7 +92,14 @@ export default function BestiaryBook() {
       flipToPage={flipToPage}
     >
       <BestiaryBookFrontCover currentPage={currentPage} />
-      <Page currentPage={currentPage} />
+      <Page currentPage={currentPage}>
+        <div className="border text-center h-full w-full flex flex-col items-center justify-center p-8">
+          <h1 className="text-2xl font-bold mb-4">Welcome to the Bestiary!</h1>
+          <p className="text">
+            This tome contains detailed information about various monsters. Use the index to find specific creatures and learn about their traits, abilities, and lore.
+          </p>
+        </div>
+      </Page>
 
       {monstersIndexPages.map((pageMonsters, index) => (
         <BestiaryMonsterTypeIndexPage

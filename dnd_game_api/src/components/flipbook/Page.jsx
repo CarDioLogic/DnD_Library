@@ -52,7 +52,7 @@ const Page = forwardRef(
     return (
       <div
         ref={ref}
-        className={`border border-gray-500 shadow-inner p-6 rounded-sm bg-book-page text-book-ink font-uncial relative ${className}`}
+        className={`overflow-hidden border border-gray-500 shadow-inner p-6 rounded-sm bg-book-page text-book-ink font-uncial relative ${className}`}
       >
         {pageContent}
 
