@@ -129,10 +129,6 @@ export async function fetchMonsterSpecialAndLegendaryActions(index: string, sign
   const query = `
     query Monster($index: String!) {
       monster(index: $index) {
-       actions {
-          name
-          desc
-        
         legendary_actions {
           name
           desc
@@ -141,8 +137,14 @@ export async function fetchMonsterSpecialAndLegendaryActions(index: string, sign
             damage_dice
             damage_type {
               name
-              desc
               index
+            }
+          }
+          dc {
+            dc_value
+            dc_type {
+              index
+              name
             }
           }
         }

@@ -4,7 +4,8 @@ import { MONSTER_TYPES } from "../../../../Data/MonsterTypes";
 import { fetchMonstersByType } from "../../../../apiClient/monsterApi";
 import BestiaryMonsterTypeIndexPage from "./BestiaryMonsterTypeIndexPage";
 import BestiaryMonsterGeneralDetailsPage from "./BestiaryMonsterGeneralDetailsPage";
-import BestiaryMonsterActions from "./BestiaryMonsterActions";
+import BestiaryMonsterSpecialActionsPage from "./BestiaryMonsterSpecialActionsPage";
+import BestiaryMonsterActionsPage from "./BestiaryMonsterActionsPage";
 import BestiaryBookFrontCover from "./BestiaryBookFrontCover";
 import BestiaryBookBackCover from "./BestiaryBookBackCover";
 import Page from "../../flipbook/Page";
@@ -14,7 +15,7 @@ export default function BestiaryBook() {
   const [currentPage, setCurrentPage] = useState(1);
   const [flipToPage, setFlipToPage] = useState(0);
   const [loadingMonsters, setLoadingMonsters] = useState(false);
-  const pagesPerMonster = 2; //general details + actions
+  const pagesPerMonster = 4; //general details + actions
 
   useEffect(() => {
     async function loadMonsters() {
@@ -59,7 +60,7 @@ export default function BestiaryBook() {
         ...item,
         monsterNbr: monsterNbr,
       });
-      monsterNbr += pagesPerMonster; //each monster takes 2 pages
+      monsterNbr += pagesPerMonster;
 
       resetCounter++;
       previousMonsterType = item.type;
@@ -124,12 +125,26 @@ export default function BestiaryBook() {
           currentPage={currentPage}
           pageNumber={monstersIndexPages.length + 2 + pagesPerMonster * index}
         />,
-        <BestiaryMonsterActions
+        <BestiaryMonsterActionsPage
           key={`monster-actions-${monster.index}`}
           monsterIndex={monster.index}
           currentPage={currentPage}
           pageNumber={monstersIndexPages.length + 3 + pagesPerMonster * index}
-        />
+        />,
+        <BestiaryMonsterSpecialActionsPage
+          key={`monster-special-actions-${monster.index}`}
+          monsterIndex={monster.index}
+          currentPage={currentPage}
+          pageNumber={monstersIndexPages.length + 4 + pagesPerMonster * index}
+        />,
+        <Page 
+          key={`monster-placeholder-page-${monster.index}`}
+          currentPage={currentPage}
+          pageNumber={monstersIndexPages.length + 6 + pagesPerMonster * index}>
+          <div className="text-center h-full w-full flex flex-col items-center justify-center p-8">
+            <h1 className="text-2xl font-bold mb-4">Placeholder page</h1>
+          </div>
+        </Page>
       ])}
 
       <BestiaryBookBackCover currentPage={currentPage} />
