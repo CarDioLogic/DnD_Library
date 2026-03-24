@@ -18,9 +18,13 @@ const Page = forwardRef(
     const [loadError, setLoadError] = useState(null);
 
     const shouldLoadPageData =
+      pageNumber - 3 === currentPage ||
+      pageNumber - 2 === currentPage ||
       pageNumber - 1 === currentPage ||
       pageNumber === currentPage ||
-      pageNumber + 1 === currentPage;
+      pageNumber + 1 === currentPage ||
+      pageNumber + 2 === currentPage ||
+      pageNumber + 3 === currentPage;
 
     useEffect(() => {
       let isMounted = true;
@@ -66,28 +70,32 @@ const Page = forwardRef(
     }, [children, shouldLoadPageData, getPageContentFunc]);
 
     return (
-      <div
-        ref={ref}
-        className={`overflow-hidden border border-gray-500 shadow-inner p-6 rounded-sm bg-book-page text-book-ink font-uncial relative ${className}`}
-      >
-        {isLoading ? (
-          <Loading />
-        ) : loadError ? (
-          <div>{loadError}</div>
-        ) : (
-          pageContent
-        )}
+      <section ref={ref} className="grain-wrap rounded-sm">
+        <div className="grain-noise"></div>
+        <div className="page-overlay"></div>
 
-        {pageNumber !== undefined && (
-          <p
-            className="absolute bottom-2 right-4 text-sm"
-            title={`User currently on page: ${currentPage}`}
-          >
-            {pagePrefix}
-            {pageNumber}
-          </p>
-        )}
-      </div>
+        <div
+          className={`h-full relative z-10 overflow-hidden border border-gray-500 shadow-inner p-6 rounded-sm text-book-ink font-uncial ${className}`}
+        >
+          {isLoading ? (
+            <Loading />
+          ) : loadError ? (
+            <div>{loadError}</div>
+          ) : (
+            pageContent
+          )}
+
+          {pageNumber !== undefined && (
+            <p
+              className="absolute bottom-2 right-4 text-sm"
+              title={`User currently on page: ${currentPage}`}
+            >
+              {pagePrefix}
+              {pageNumber}
+            </p>
+          )}
+        </div>
+      </section>
     );
   }
 );

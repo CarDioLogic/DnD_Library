@@ -9,7 +9,7 @@ const BestiaryBookFrontCover = forwardRef(
         ref={ref}
         currentPage={currentPage}
         pageNumber={pageNumber}
-        className="bg-gradient-to-br from-red-700 to-gray-900 text-white"    
+        className="book-cover-overlay text-white"    
       >
         <div className="border h-full w-full flex flex-col items-center justify-center p-8">
             <h1 className="text-center text-4xl font-bold mb-4 font-uncial">Bestiary</h1>

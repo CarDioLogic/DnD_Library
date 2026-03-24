@@ -33,6 +33,13 @@ const BestiaryMonsterGeneralDetailsPage = forwardRef(
               alt={monster.name}
               className="h-48 border rounded-[50%] mb-4 text-center mx-auto"
             />
+
+            <section>
+              <div class="isolate">
+                <div class="noise"></div>
+                <div class="overlay"></div>
+              </div>
+            </section>
             
             <h1 title="" className="text-xl font-bold break-words leading-none">{monster.name}</h1>
             <p title="Monster type" className="break-words">{`${monster.type} ${monster.subtype ?? ""}`}</p>

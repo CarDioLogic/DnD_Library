@@ -1,12 +1,49 @@
-
 @import "tailwindcss";
 
-/* fonts */
 /* links to fonts in index.html */
-
-@theme {
-  --font-uncial: "Uncial Antiqua", cursive;
+:root {
   --color-book-page: #f4ecd8;
   --color-book-ink: #3b2f1e;
   --color-book-border: #d6c7a1;
+}
+
+@theme {
+  --font-uncial: "Uncial Antiqua", cursive;
+
+  --color-book-page: var(--color-book-page);
+  --color-book-ink: var(--color-book-ink);
+  --color-book-border: var(--color-book-border);
+}
+
+.grain-wrap {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--color-book-page);
+}
+
+.grain-noise,
+.page-overlay,
+.book-cover-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.grain-noise {
+  background:
+    linear-gradient(to top, gray, transparent),
+    url("/images/misc/grainy.svg");
+  background-size: cover;
+  background-repeat: repeat;
+}
+
+.page-overlay {
+  background: var(--color-book-page);
+  mix-blend-mode: multiply;
+}
+
+.book-cover-overlay {
+  background: linear-gradient(to bottom right, #b91c1c, #111827);
+  mix-blend-mode: multiply;
 }

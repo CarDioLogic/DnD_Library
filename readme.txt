@@ -25,9 +25,11 @@ To implement:
     -Make the book responsive
 
     -some content may overflow when theres too much data for some monsters.
-        -found it in some monsters in the legendary pages.
+        -found it in some monsters in the legendary pages (check will-o-wisp monster).
 
     -control panel to remove sound and explain controls and manage other settigns
+
+    -failed to load monster actions on sea-horse
 
 
 
