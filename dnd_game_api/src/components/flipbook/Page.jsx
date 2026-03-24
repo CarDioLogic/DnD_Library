@@ -1,4 +1,5 @@
 import React, { forwardRef, useEffect, useState } from "react";
+import Loading from "../general/Loading";
 
 const Page = forwardRef(
   (
@@ -13,6 +14,8 @@ const Page = forwardRef(
     ref
   ) => {
     const [pageContent, setPageContent] = useState(children || null);
+    const [isLoading, setIsLoading] = useState(false);
+    const [loadError, setLoadError] = useState(null);
 
     const shouldLoadPageData =
       pageNumber - 1 === currentPage ||
@@ -25,19 +28,31 @@ const Page = forwardRef(
       async function loadContent() {
         if (children) {
           setPageContent(children);
+          setIsLoading(false);
+          setLoadError(null);
           return;
         }
 
         if (getPageContentFunc && shouldLoadPageData) {
           try {
+            setIsLoading(true);
+            setLoadError(null);
+
             const data = await getPageContentFunc();
+
             if (isMounted) {
               setPageContent(data);
             }
           } catch (error) {
             console.error("Failed to load page content:", error);
+
             if (isMounted) {
-              setPageContent("Failed to load content.");
+              setLoadError("Failed to load content.");
+              setPageContent(null);
+            }
+          } finally {
+            if (isMounted) {
+              setIsLoading(false);
             }
           }
         }
@@ -55,13 +70,23 @@ const Page = forwardRef(
         ref={ref}
         className={`overflow-hidden border border-gray-500 shadow-inner p-6 rounded-sm bg-book-page text-book-ink font-uncial relative ${className}`}
       >
-        {pageContent}
+        {isLoading ? (
+          <Loading />
+        ) : loadError ? (
+          <div>{loadError}</div>
+        ) : (
+          pageContent
+        )}
 
-        {pageNumber !== undefined && 
-          <p className="absolute bottom-2 right-4 text-sm"
-            title={`User currently on page: ${currentPage}`}>
-            {pagePrefix}{pageNumber}
-          </p>}
+        {pageNumber !== undefined && (
+          <p
+            className="absolute bottom-2 right-4 text-sm"
+            title={`User currently on page: ${currentPage}`}
+          >
+            {pagePrefix}
+            {pageNumber}
+          </p>
+        )}
       </div>
     );
   }

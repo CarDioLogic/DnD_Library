@@ -38,7 +38,7 @@ const BestiaryMonsterSensesProficienciesResistancesPage  = forwardRef(
               </div>
             )}
             {/* languages is a string */}
-            {(monster.languages && monster.languages !==1 '') && (
+            {(monster.languages && monster.languages !== '') && (
               <div className="mb-2">
                 <span className="text-sm"><strong>Languages:</strong> {monster.languages}</span>
               </div>

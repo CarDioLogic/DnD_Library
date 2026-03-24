@@ -8,6 +8,7 @@ export default function BookFrame({ children,
   width = 300,
   height = 500,
   isHidden = false,
+  fillParentWidth = false
  }) {
   const book = useRef(null);
 
@@ -77,6 +78,7 @@ export default function BookFrame({ children,
       ref={book}
       width={width}
       height={height}
+      size={fillParentWidth ? 'stretch' :"fixed"}
     >
       {children}
     </HTMLFlipBook>

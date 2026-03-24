@@ -93,6 +93,7 @@ export default function BestiaryBook() {
 
   return (
     <BookFrame
+      fillParentWidth={false}
       key={`book-${monstersIndexPages.length}-${monsters.length}`}
       setCurrentPage={setCurrentPage}
       flipToPage={flipToPage}
