@@ -72,10 +72,7 @@ export async function fetchMonsterActions(index: string, signal?: AbortSignal) {
   const query = `
     query Monster($index: String!) {
       monster(index: $index) {
-        index,
-        name,
-        type,
-         actions {
+       actions {
           name
           desc
           multiattack_type
@@ -94,7 +91,48 @@ export async function fetchMonsterActions(index: string, signal?: AbortSignal) {
             count
             type
           }
+          dc {
+            dc_value
+            dc_type {
+              index
+              name
+            }
+          }
         }
+        speed {
+          burrow
+          climb
+          fly
+          hover
+          swim
+          walk
+        }
+      }
+    }
+  `;
+
+  const response = await axios.post(
+    url,
+    {
+      query,
+      variables: { index },
+    },
+    {
+      signal,
+    }
+  );
+
+  return response.data.data.monster;
+}
+
+export async function fetchMonsterSpecialAndLegendaryActions(index: string, signal?: AbortSignal) {
+  const query = `
+    query Monster($index: String!) {
+      monster(index: $index) {
+       actions {
+          name
+          desc
+        
         legendary_actions {
           name
           desc
@@ -107,14 +145,6 @@ export async function fetchMonsterActions(index: string, signal?: AbortSignal) {
               index
             }
           }
-        }
-        speed {
-          burrow
-          climb
-          fly
-          hover
-          swim
-          walk
         }
         special_abilities {
           name

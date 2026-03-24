@@ -35,7 +35,7 @@ const BestiaryMonsterGeneralDetailsPage = forwardRef(
             
             <h1 title="" className="text-xl font-bold break-words leading-none">{monster.name}</h1>
             <p title="Monster type" className="break-words">{`${monster.type} ${monster.subtype ?? ""}`}</p>
-            <hr className="mb-4"></hr>
+            <hr className="mb-2"></hr>
 
             <div className="flex justify-between">
               <Icon
@@ -52,17 +52,19 @@ const BestiaryMonsterGeneralDetailsPage = forwardRef(
                 label={`${monster.hit_points} HP`}
               />
             </div>
-            <p title="Experience Points" className="break-words text-end">{monster.xp} XP</p>
 
-            <Icon
-              parentClasses="justify-end"
-              title="Challenge Rating"
-              imgSrc={`/images/misc/ifrit.svg`}
-              altText="ifrit icon"
-              label={monster.challenge_rating}
-            />
+            <div className="flex justify-between">
+              <Icon
+                parentClasses="justify-end"
+                title="Challenge Rating"
+                imgSrc={`/images/misc/ifrit.svg`}
+                altText="ifrit icon"
+                label={monster.challenge_rating}
+              />
+              <p title="Experience Points" className="break-words text-end">{monster.xp} XP</p>
+            </div>            
 
-            <div className="mt-4">
+            <div className="mt-2">
               <h1>Abilities:</h1>
               <div className="flex justify-between flex-wrap">              
                 {ABILITIES.map(ability => (
