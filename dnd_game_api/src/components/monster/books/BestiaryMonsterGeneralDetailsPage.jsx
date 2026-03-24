@@ -4,6 +4,7 @@ import { fetchMonsterDetails } from "../../../../apiClient/monsterApi";
 import { baseApiUrl } from "../../../../Core/constants";
 import Icon from "../../general/Icon";
 import { ABILITIES } from "../../../../Data/Abilities";
+import { formatAbilityModifier, formatArmorClass } from "../../../../Core/helpers";
 
 const BestiaryMonsterGeneralDetailsPage = forwardRef(
   ({ monsterIndex, pageNumber, currentPage }, ref) => {
@@ -22,7 +23,7 @@ const BestiaryMonsterGeneralDetailsPage = forwardRef(
           monsterIndex,
           controller.signal
         );
-
+      
         return (
           <div>
             <p className="text-center">{monster.alignment}</p>
@@ -35,46 +36,48 @@ const BestiaryMonsterGeneralDetailsPage = forwardRef(
             
             <h1 title="" className="text-xl font-bold break-words leading-none">{monster.name}</h1>
             <p title="Monster type" className="break-words">{`${monster.type} ${monster.subtype ?? ""}`}</p>
-            <hr className="mb-2"></hr>
+            <hr className="my-2"></hr>
 
-            <div className="flex justify-between">
-              <Icon
-                title="Size"
-                imgSrc={`/images/misc/measure-tape.svg`}
-                altText="measure tape icon"
-                label={monster.size}
-              />
-
-              <Icon
-                title="Hit Points"
-                imgSrc={`/images/misc/heart.svg`}
-                altText="heart icon"
-                label={`${monster.hit_points} HP`}
-              />
-            </div>
-
-            <div className="flex justify-between">
+            <div className="flex justify-between mb-2">
               <Icon
                 parentClasses="justify-end"
                 title="Challenge Rating"
                 imgSrc={`/images/misc/ifrit.svg`}
                 altText="ifrit icon"
-                label={monster.challenge_rating}
-              />
-              <p title="Experience Points" className="break-words text-end">{monster.xp} XP</p>
-            </div>            
+                label={`${monster.challenge_rating} (${monster.xp} XP)`}
+              />       
+              <Icon
+                title="Size"
+                imgSrc={`/images/misc/measure-tape.svg`}
+                altText="measure tape icon"
+                label={monster.size}
+              />  
+            </div>  
 
-            <div className="mt-2">
-              <h1>Abilities:</h1>
-              <div className="flex justify-between flex-wrap">              
+            <div className="flex justify-between mb-2">
+              <Icon
+                title="Hit Points"
+                imgSrc={`/images/misc/heart.svg`}
+                altText="heart icon"
+                label={`${monster.hit_points} (${monster.hit_points_roll}) HP`}
+              />
+            </div>    
+            <div className="flex justify-between mb-2">
+              <Icon
+                title="Armor class"
+                imgSrc={`/images/misc/armor.svg`}
+                altText="heart icon"
+                label={formatArmorClass(monster.armor_class)}
+              />
+            </div>          
+
+            <div className="mt-4">
+              <div className="flex justify-between">              
                 {ABILITIES.map(ability => (
-                  <Icon
-                    key={ability}
-                    title={ability}
-                    imgSrc={`/images/abilities/${ability}.svg`}
-                    altText={`${ability} icon`}
-                    label={monster[ability]}
-                  />
+                    <div className="text-center" key={ability}>
+                      <p>{ability.slice(0,3).toUpperCase()}</p>
+                      <p className="font-bold text-xs">{monster[ability]} ({formatAbilityModifier(monster[ability])})</p>
+                    </div>
                 ))}
               </div>
             </div>

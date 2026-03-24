@@ -6,6 +6,7 @@ import BestiaryMonsterTypeIndexPage from "./BestiaryMonsterTypeIndexPage";
 import BestiaryMonsterGeneralDetailsPage from "./BestiaryMonsterGeneralDetailsPage";
 import BestiaryMonsterSpecialActionsPage from "./BestiaryMonsterSpecialActionsPage";
 import BestiaryMonsterActionsPage from "./BestiaryMonsterActionsPage";
+import BestiaryMonsterSensesProficienciesResistancesPage  from "./BestiaryMonsterSensesProficienciesResistancesPage";
 import BestiaryBookFrontCover from "./BestiaryBookFrontCover";
 import BestiaryBookBackCover from "./BestiaryBookBackCover";
 import Page from "../../flipbook/Page";
@@ -95,6 +96,7 @@ export default function BestiaryBook() {
       key={`book-${monstersIndexPages.length}-${monsters.length}`}
       setCurrentPage={setCurrentPage}
       flipToPage={flipToPage}
+      width="400"
     >
       <BestiaryBookFrontCover currentPage={currentPage} />
       <Page currentPage={currentPage}>
@@ -137,14 +139,12 @@ export default function BestiaryBook() {
           currentPage={currentPage}
           pageNumber={monstersIndexPages.length + 4 + pagesPerMonster * index}
         />,
-        <Page 
-          key={`monster-placeholder-page-${monster.index}`}
+        <BestiaryMonsterSensesProficienciesResistancesPage
+          key={`monster-sensprofsres-actions-${monster.index}`}
+          monsterIndex={monster.index}
           currentPage={currentPage}
-          pageNumber={monstersIndexPages.length + 6 + pagesPerMonster * index}>
-          <div className="text-center h-full w-full flex flex-col items-center justify-center p-8">
-            <h1 className="text-2xl font-bold mb-4">Placeholder page</h1>
-          </div>
-        </Page>
+          pageNumber={monstersIndexPages.length + 5 + pagesPerMonster * index}
+        />,
       ])}
 
       <BestiaryBookBackCover currentPage={currentPage} />

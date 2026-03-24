@@ -25,6 +25,13 @@ To implement:
         -containing more info about the monster (actions, armor class, immunities, etc).
         -maybe will need to adjust logic in bestiary book component related to pagination (extra pages counting)
             to ensure that the detail monster page and that extra page stay side by side always!
+    
+    -add grainy old style effect (gradient/filter) to monster image.
+
+    -Make the book responsive
+
+    -some content may overflow when theres too much data for some monsters.
+        -found it in some monsters in the legendary pages.
 
 
 

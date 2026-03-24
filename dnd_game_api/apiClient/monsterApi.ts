@@ -49,7 +49,36 @@ export async function fetchMonsterDetails(index: string, signal?: AbortSignal) {
         xp
         size
         hit_points
+        hit_points_roll
         hit_dice
+
+        armor_class {
+          ... on ArmorClassDex {
+            value
+            type
+            desc
+          }
+          ... on ArmorClassNatural {
+            desc
+            type
+            value
+          }
+          ... on ArmorClassArmor {
+            value
+            type
+            desc
+          }
+          ... on ArmorClassSpell {
+            value
+            type
+            desc
+          }
+          ... on ArmorClassCondition {
+            value
+            type
+            desc
+          }
+        }
       }
     }
   `;
@@ -157,6 +186,60 @@ export async function fetchMonsterSpecialAndLegendaryActions(index: string, sign
             type
             rest_types
           }
+        }
+      }
+    }
+  `;
+
+  const response = await axios.post(
+    url,
+    {
+      query,
+      variables: { index },
+    },
+    {
+      signal,
+    }
+  );
+
+  return response.data.data.monster;
+}
+
+export async function fetchMonsterSensesProficienciesReactionsResistances(index: string, signal?: AbortSignal) {
+  const query = `
+    query Monster($index: String!) {
+      monster(index: $index) {
+        senses {
+          blindsight
+          darkvision
+          passive_perception
+          tremorsense
+          truesight
+        }
+        languages
+        proficiencies {
+          value
+          proficiency {
+            name
+          }
+        }
+        reactions {
+          name
+          desc
+          dc {
+            dc_value
+            dc_type {
+              name
+              desc
+            }
+          }
+        }
+        damage_vulnerabilities
+        damage_resistances
+        damage_immunities
+        condition_immunities {
+          name
+          desc
         }
       }
     }
