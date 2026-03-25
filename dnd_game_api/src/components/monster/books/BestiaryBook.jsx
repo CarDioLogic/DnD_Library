@@ -101,7 +101,7 @@ export default function BestiaryBook() {
     >
       <BestiaryBookFrontCover currentPage={currentPage} />
       <Page currentPage={currentPage}>
-        <div className="border text-center h-full w-full flex flex-col items-center justify-center p-8">
+        <div className="border outline outline-offset-15 outline-2 outline-dashed outline-gray-500 text-center h-full w-full flex flex-col items-center justify-center p-8">
           <h1 className="text-2xl font-bold mb-4">Welcome to the Bestiary!</h1>
           <p className="text">
             This tome contains detailed information about various monsters. Use the index to find specific creatures and learn about their traits, abilities, and lore.

@@ -47,3 +47,27 @@
   background: linear-gradient(to bottom right, #b91c1c, #111827);
   mix-blend-mode: multiply;
 }
+
+.separators{
+  position:absolute;
+  float:left;
+}
+.separator {
+  width:100px;
+  height: 100px;
+  background-color:red;
+}
+
+.screen-full{
+  max-width: 100vw;
+  min-height: 100vh;
+}
+
+.wood-bg{
+  max-width: 100vw;
+  min-height: 100vh;
+  overflow:hidden;
+  background:url("/images/textures/wood.jpg");
+  background-size: cover;
+  background-repeat: repeat;
+}

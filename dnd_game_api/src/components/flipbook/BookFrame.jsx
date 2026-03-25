@@ -72,15 +72,15 @@ export default function BookFrame({ children,
   if(isHidden) return null;
 
   return (
-    <HTMLFlipBook
-      showCover={true}
-      onFlip={onFlip}
-      ref={book}
-      width={width}
-      height={height}
-      size={fillParentWidth ? 'stretch' :"fixed"}
-    >
-      {children}
-    </HTMLFlipBook>
+      <HTMLFlipBook
+          showCover={true}
+          onFlip={onFlip}
+          ref={book}
+          width={width}
+          height={height}
+          size={fillParentWidth ? 'stretch' :"fixed"}
+        >
+          {children}
+        </HTMLFlipBook>
   );
 }
