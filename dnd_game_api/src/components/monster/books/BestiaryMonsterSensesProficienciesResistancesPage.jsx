@@ -22,7 +22,6 @@ const BestiaryMonsterSensesProficienciesResistancesPage  = forwardRef(
           monsterIndex,
           controller.signal
         );
-        console.log("Loaded monster extra details:", monster);
 
         return (
           <div>

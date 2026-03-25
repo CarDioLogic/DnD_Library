@@ -36,7 +36,7 @@ const Page = forwardRef(
           setLoadError(null);
           return;
         }
-
+        
         if (getPageContentFunc && shouldLoadPageData) {
           try {
             setIsLoading(true);

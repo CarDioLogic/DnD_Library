@@ -22,7 +22,7 @@ const BestiaryMonsterActionsPage = forwardRef(
           controller.signal
         );
 
-        console.log("Loaded monster actions:", monster);
+        console.log("Loaded monster actions TESTE:", monster);
 
         return (
           <div>

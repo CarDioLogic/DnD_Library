@@ -19,16 +19,23 @@ page-flip-1 -> freesound_community-page-flip-47177
 page-flip-2 -> xpmonster-turning-page-in-a-book-419580
 
 
-To implement:
-    -A sort of "separators" on the side of the book representing each monster type
-        -maybe a separators component for the book?
-1    
+To implement: 
     -Make the book responsive
 
     -some content may overflow when theres too much data for some monsters.
         -found it in some monsters in the legendary pages (check will-o-wisp monster).
 
-    -control panel to remove sound and explain controls and manage other settigns
+    -control panel to remove sound 
+    -explain controls and manage other settigns
+        -use control keys on the book wrapper component
+            -use position abs and place them after children (will count as pages but wont matter because of pos abs)
+
+    monster planetar is failing (fey type)
+
+    Low priority:
+        -A sort of "separators" on the side of the book representing each monster type
+        -maybe a separators component for the book?
+
 
 
 

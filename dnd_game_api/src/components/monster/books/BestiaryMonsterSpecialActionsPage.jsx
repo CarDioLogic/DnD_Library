@@ -22,7 +22,6 @@ const BestiaryMonsterSpecialActionsPage = forwardRef(
           monsterIndex,
           controller.signal
         );
-        console.log("Loaded monster actions:", monster);
 
         if(!monster.legendary_actions && !monster.special_abilities){
           return (

@@ -18,7 +18,7 @@ const BestiaryMonsterTypeIndexPage = forwardRef(
 
           <ul className="ml-4 mt-2 space-y-1">
             {monsters.map((monster) => (
-              <li
+              <li title={monster.monsterNbr}
                 className="cursor-pointer text-sm"
                 key={monster.index}
                 onClick={(e) => {

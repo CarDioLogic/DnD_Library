@@ -51,28 +51,25 @@ export default function BookFrame({ children,
     }
 
     console.log("Flipping to page ", flipToPage);
-    book.current.pageFlip().flip(flipToPage);
-    console.log("flip to ", flipToPage )
-
-    // or:
-    // book.current.pageFlip().turnToPage(flipToPage);
+    book.current.pageFlip().turnToPage(flipToPage);
   }, [flipToPage]);
 
   const onFlip = useCallback(
     (e) => {
-      const currentPage = e.data; // 0-based
-      console.log('current page', currentPage);
+      const currentPage = e.data; 
+      console.log("Current page:", currentPage);
       setCurrentPage(currentPage);
       playPageFlip2();
     },
     [setCurrentPage]
   );
 
-  console.log("BookFrame render: isHidden=", isHidden);
   if(isHidden) return null;
 
   return (
       <HTMLFlipBook
+        // clickEventForward={false}
+        disableFlipByClick={true}
           showCover={true}
           onFlip={onFlip}
           ref={book}

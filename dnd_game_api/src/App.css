@@ -70,4 +70,5 @@
   background:url("/images/textures/wood.jpg");
   background-size: cover;
   background-repeat: repeat;
+  position:relative;
 }
