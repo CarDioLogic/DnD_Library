@@ -25,16 +25,16 @@ To implement:
     -some content may overflow when theres too much data for some monsters.
         -found it in some monsters in the legendary pages (check will-o-wisp monster).
 
-    -control panel to remove sound 
-    -explain controls and manage other settigns
-        -use control keys on the book wrapper component
-            -use position abs and place them after children (will count as pages but wont matter because of pos abs)
+    -mute btn/icon to remove sound 
 
     monster planetar is failing (fey type)
 
     Low priority:
         -A sort of "separators" on the side of the book representing each monster type
         -maybe a separators component for the book?
+
+    Add more books (spells, armor, items, etc)
+        -add component to select books
 
 
 

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useCallback } from 'react';
 import HTMLFlipBook from 'react-pageflip';
 import { playPageFlip2 } from '../../../Core/soundplayer';
+import InstructionKey from '../general/InstructionKey';
 
 export default function BookFrame({ children, 
   setCurrentPage, 
@@ -67,7 +68,9 @@ export default function BookFrame({ children,
   if(isHidden) return null;
 
   return (
+    <>
       <HTMLFlipBook
+        className="relative"
         // clickEventForward={false}
         disableFlipByClick={true}
           showCover={true}
@@ -79,5 +82,26 @@ export default function BookFrame({ children,
         >
           {children}
         </HTMLFlipBook>
+        <div className="mt-5 flex gap-10 items-start text-center">
+          <InstructionKey
+            keyBind="1"
+            label="Beginning"
+          />
+          <InstructionKey
+            isArrow={true}
+            keyBind="ArrowLeft"
+            label="Previous page"
+          />
+          <InstructionKey
+            isArrow={true}
+            keyBind="ArrowRight"
+            label="Next page"
+          />
+          <InstructionKey
+            keyBind="0"
+            label="End"
+          />
+        </div>
+    </>
   );
 }
