@@ -1,8 +1,8 @@
 import { forwardRef } from "react";
-import Page from "../../flipbook/Page";
+import Page from "./Page";
 
-const BestiaryBookFrontCover = forwardRef(
-  ({ pageNumber, currentPage }, ref) => {
+const BookFrontCover = forwardRef(
+  ({ pageNumber, currentPage, title }, ref) => {
 
     return (
       <Page
@@ -12,13 +12,13 @@ const BestiaryBookFrontCover = forwardRef(
         className="book-cover-overlay text-yellow-400"    
       >
         <div className="border h-full w-full flex flex-col items-center justify-center p-8">
-            <h1 className="text-center text-4xl font-bold mb-4 font-uncial">Bestiary</h1>
+            <h1 className="text-center text-4xl font-bold mb-4 font-uncial">{title}</h1>
         </div>
       </Page>
     );
   }
 );
 
-BestiaryBookFrontCover.displayName = "BestiaryBookFrontCover";
+BookFrontCover.displayName = "BookFrontCover";
 
-export default BestiaryBookFrontCover;
+export default BookFrontCover;

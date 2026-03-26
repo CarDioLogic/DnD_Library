@@ -18,6 +18,10 @@ page-flip-2 -> xpmonster-turning-page-in-a-book-419580
 
 
 To implement: 
+    in the grimoire in the index for all spells
+        add icons for the classes that can cast the spell
+
+    find icons for each existent class
 
     Add more books (spells, armor, items, etc)
     -add component to select books

@@ -1,7 +1,7 @@
 import { forwardRef } from "react";
-import Page from "../../flipbook/Page";
+import Page from "./Page";
 
-const BestiaryBookBackCover = forwardRef(
+const BookBackCover = forwardRef(
   ({ pageNumber, currentPage }, ref) => {
 
     return (
@@ -19,6 +19,6 @@ const BestiaryBookBackCover = forwardRef(
   }
 );
 
-BestiaryBookBackCover.displayName = "BestiaryBookBackCover";
+BookBackCover.displayName = "BookBackCover";
 
-export default BestiaryBookBackCover;
+export default BookBackCover;
