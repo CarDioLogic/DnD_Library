@@ -1,6 +1,6 @@
 import { useEffect, useRef, useCallback } from 'react';
 import HTMLFlipBook from 'react-pageflip';
-import { playPageFlip2 } from '../../../Core/soundplayer';
+import SoundPlayer from '../../../Core/soundPlayer';
 import InstructionKey from '../general/InstructionKey';
 
 export default function BookFrame({ children, 
@@ -12,6 +12,7 @@ export default function BookFrame({ children,
   fillParentWidth = false
  }) {
   const book = useRef(null);
+  const soundPlayer = new SoundPlayer();
 
   useEffect(() => {
     const handleKeyDown = (event) => {
@@ -60,7 +61,7 @@ export default function BookFrame({ children,
       const currentPage = e.data; 
       console.log("Current page:", currentPage);
       setCurrentPage(currentPage);
-      playPageFlip2();
+      soundPlayer.playPageFlip2();
     },
     [setCurrentPage]
   );

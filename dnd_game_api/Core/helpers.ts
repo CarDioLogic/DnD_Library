@@ -59,3 +59,21 @@ export const formatSenses = (sensesObj: Record<string, number | null>) => {
     })
     .join(", ");
 };
+
+//mute the app
+export const setIsMuted = (value: boolean): void => {
+  localStorage.setItem("isMuted", JSON.stringify(value));
+};
+
+//check if the app is muted
+export const getIsMuted = (): boolean => {
+  const stored = localStorage.getItem("isMuted");
+
+  if (stored === null) return false;
+
+  try {
+    return JSON.parse(stored);
+  } catch {
+    return false;
+  }
+};

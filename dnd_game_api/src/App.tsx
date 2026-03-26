@@ -1,6 +1,7 @@
 import './App.css'
 // import Monsters from './views/Monsters.jsx';
- import MonstersBookView from './views/MonstersBookView.jsx';
+import MonstersBookView from './views/MonstersBookView.jsx';
+import MuteIcon from './components/general/MuteIcon'
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
           // <Monsters />
           <MonstersBookView/>
         }        
+      <MuteIcon/>
    </>
   )
 }

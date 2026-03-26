@@ -78,6 +78,13 @@ export default function BestiaryBook() {
     return paginateMonsters(monsters, 13);
   }, [monsters]);
 
+  const addExtraPageAtEnd = () => {
+        //will use this to decide wether to add an extra empty page at the end so that the cover stays in the right position
+      const lastPageAfterMonsters =
+        monsters[monsters.length - 1].monsterNbr +  monstersIndexPages.length + 3;  
+      return lastPageAfterMonsters % 2 != 0;
+  };
+
   const flipToPageHandler = (monsterNbr) => {
     const nbrIndexPages = monstersIndexPages.length;
 
@@ -165,6 +172,20 @@ export default function BestiaryBook() {
         />,
       ])}
 
+      { addExtraPageAtEnd && (
+        <Page currentPage={currentPage}>
+          <div className="border text-center h-full w-full flex flex-col items-center justify-center p-8">
+          </div>
+        </Page>
+      )}
+
+      <Page currentPage={currentPage}>
+        <div className="border outline outline-offset-15 outline-2 outline-dashed outline-gray-500 text-center h-full w-full flex flex-col items-center justify-center p-8">
+          <p className="text-lg text-center">
+            Thank you for exploring the Bestiary! We hope you found the information about various monsters insightful and engaging.
+          </p>
+        </div>
+      </Page>
       <BestiaryBookBackCover currentPage={currentPage} />
     </BookFrame>
   );

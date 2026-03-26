@@ -20,21 +20,19 @@ page-flip-2 -> xpmonster-turning-page-in-a-book-419580
 
 
 To implement: 
-    -Make the book responsive
-
     -some content may overflow when theres too much data for some monsters.
         -found it in some monsters in the legendary pages (check will-o-wisp monster).
 
-    -mute btn/icon to remove sound 
+    Add more books (spells, armor, items, etc)
+    -add component to select books
 
-    monster planetar is failing (fey type)
+    -Make the book responsive
 
     Low priority:
         -A sort of "separators" on the side of the book representing each monster type
         -maybe a separators component for the book?
 
-    Add more books (spells, armor, items, etc)
-        -add component to select books
+
 
 
 

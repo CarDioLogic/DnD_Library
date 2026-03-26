@@ -1,21 +1,36 @@
-import { getRandomInRange } from "./helpers";
+import { getRandomInRange, setIsMuted, getIsMuted } from "./helpers";
 
-export const playFile = (fileName: string) => {
-  const audio = new Audio(`/sounds/${fileName}`);
-  audio.play().catch((err) => {
-    console.error("Error playing sound:", err);
-  });
-};
+export default class SoundPlayer {
+  toggleMuted = (): boolean => {
+    const nextMuted = !getIsMuted();
+    setIsMuted(nextMuted);
+    return nextMuted;
+  };
 
-export const playRandomPageFlipSound = () => {
-  const randomIndex = getRandomInRange(1, 2);
-  playFile(`misc/page-flip-${randomIndex}.mp3`);
-};
+  getIsMuted = (): boolean => {
+    return getIsMuted();
+  };
 
-export const playPageFlip1 = () => {
-  playFile(`misc/page-flip-1.mp3`);
-};
+  playFile(fileName: string) {
+    const isMuted = getIsMuted();
+    console.log("is it muted", isMuted);
 
-export const playPageFlip2 = () => {
-  playFile(`misc/page-flip-2.mp3`);
-};
+    if (isMuted) return;
+
+    const audio = new Audio(`/sounds/${fileName}`);
+    audio.play().catch(console.error);
+  }
+
+  playRandomPageFlipSound() {
+    const randomIndex = getRandomInRange(1, 2);
+    this.playFile(`misc/page-flip-${randomIndex}.mp3`);
+  }
+
+  playPageFlip1() {
+    this.playFile("misc/page-flip-1.mp3");
+  }
+
+  playPageFlip2() {
+    this.playFile("misc/page-flip-2.mp3");
+  }
+}

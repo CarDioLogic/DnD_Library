@@ -87,3 +87,22 @@
   justify-content:center;
   align-items:center;
 }
+
+.relative{
+  position: relative;
+}
+
+.mute-icon { 
+  cursor:pointer;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  position: absolute;
+  top:10px;
+  right:40px;
+  border-radius:50%;
+  background-color:white;
+  width:50px;
+  height:50px;
+  border:none;
+}
