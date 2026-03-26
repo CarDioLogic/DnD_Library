@@ -106,3 +106,7 @@
   height:50px;
   border:none;
 }
+
+.invisible {
+  visibility: hidden;
+}

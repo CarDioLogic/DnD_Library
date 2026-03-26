@@ -10,18 +10,14 @@ icon colors:
 bg black: 000
 fr red: B41F1F
 
-
 sounds:
 pixelaby
-
 
 page-flip-1 -> freesound_community-page-flip-47177
 page-flip-2 -> xpmonster-turning-page-in-a-book-419580
 
 
 To implement: 
-    -some content may overflow when theres too much data for some monsters.
-        -found it in some monsters in the legendary pages (check will-o-wisp monster).
 
     Add more books (spells, armor, items, etc)
     -add component to select books

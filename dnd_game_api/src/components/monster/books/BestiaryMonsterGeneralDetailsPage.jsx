@@ -25,7 +25,7 @@ const BestiaryMonsterGeneralDetailsPage = forwardRef(
         );
       
         return (
-          <div>
+          <>
             <p className="text-center">{monster.alignment}</p>
             <img
               title={monster.name}
@@ -88,7 +88,7 @@ const BestiaryMonsterGeneralDetailsPage = forwardRef(
                 ))}
               </div>
             </div>
-          </div>
+          </>
         );
       } catch (error) {
         if (

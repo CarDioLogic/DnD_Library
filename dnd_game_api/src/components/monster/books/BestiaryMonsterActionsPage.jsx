@@ -25,7 +25,7 @@ const BestiaryMonsterActionsPage = forwardRef(
         console.log("Loaded monster actions TESTE:", monster);
 
         return (
-          <div>
+          <>
             <div className="mb-2">
               <h2 className="font-bold">Movement:</h2>
               <div className="flex flex-wrap items-center gap-2 text-sm">
@@ -110,7 +110,7 @@ const BestiaryMonsterActionsPage = forwardRef(
                 </div>
               </div>
             )}
-          </div>
+          </>
         );
       } catch (error) {
         if (

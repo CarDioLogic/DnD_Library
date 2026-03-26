@@ -1,5 +1,7 @@
-import React, { forwardRef, useEffect, useState } from "react";
+import React, { forwardRef, useEffect, useRef, useState } from "react";
 import Loading from "../general/Loading";
+import ExtraPageContent from "./ExtraPageContent";
+import Icon from "../general/Icon";
 
 const Page = forwardRef(
   (
@@ -16,6 +18,10 @@ const Page = forwardRef(
     const [pageContent, setPageContent] = useState(children || null);
     const [isLoading, setIsLoading] = useState(false);
     const [loadError, setLoadError] = useState(null);
+    const [overflowingHtml, setOverflowingHtml] = useState([]);
+    const [openOverFlowingContent, setOpenOverFlowingContent] = useState(false);
+
+    const contentRef = useRef(null);
 
     const shouldLoadPageData =
       pageNumber - 3 === currentPage ||
@@ -36,7 +42,7 @@ const Page = forwardRef(
           setLoadError(null);
           return;
         }
-        
+
         if (getPageContentFunc && shouldLoadPageData) {
           try {
             setIsLoading(true);
@@ -69,12 +75,63 @@ const Page = forwardRef(
       };
     }, [children, shouldLoadPageData, getPageContentFunc]);
 
+    useEffect(() => {
+      if (
+        isLoading ||
+        loadError ||
+        !pageContent ||
+        !contentRef.current ||
+        pageNumber !== currentPage
+      ) {
+        return;
+      }
+
+      const el = contentRef.current;
+
+      const checkOverflow = () => {
+        const parentRect = el.getBoundingClientRect();
+        let overflowingHtml = "";
+
+        Array.from(el.children).forEach((child, index) => {
+          if (!(child instanceof HTMLElement)) return;
+
+          const rect = child.getBoundingClientRect();
+
+          const isOverflowing =
+            rect.left < parentRect.left ||
+            rect.right > parentRect.right ||
+            rect.top < parentRect.top ||
+            rect.bottom > parentRect.bottom;
+
+            child.classList.remove("invisible");
+          if (isOverflowing) {
+            overflowingHtml += child.outerHTML;
+
+            child.classList.add("invisible");
+          } else {
+            child.classList.remove("invisible");
+          }
+        });
+
+        setOverflowingHtml(overflowingHtml);
+
+        if (pageNumber === 421) {
+          console.log("OverflowingHtml children:", overflowingHtml);
+        }
+      };
+
+      const timer = setTimeout(checkOverflow, 50);
+
+      return () => clearTimeout(timer);
+    }, [pageContent, isLoading, loadError, pageNumber, currentPage]);
+
     return (
-      <section ref={ref} className="grain-wrap rounded-sm">
+      <section ref={ref} className="grain-wrap rounded-sm relative">
         <div className="grain-noise"></div>
         <div className="page-overlay"></div>
 
         <div
+          ref={contentRef}
           className={`h-full relative z-10 overflow-hidden border border-gray-500 shadow-inner p-6 rounded-sm text-book-ink font-uncial ${className}`}
         >
           {isLoading ? (
@@ -94,7 +151,26 @@ const Page = forwardRef(
               {pageNumber}
             </p>
           )}
+
+          {overflowingHtml.length > 0 && (
+            <>
+              <div onClick={() => {setOpenOverFlowingContent(true)}}
+                className="absolute top-3 right-3 border border-gray-400 rounded-sm px-2 py-1 text-sm cursor-pointer">
+                <Icon                  
+                  title={`View extra page content`}
+                  imgSrc={`/images/general/foldedPaper.svg`}
+                />
+              </div>
+
+              <ExtraPageContent
+                onClose={() => {setOpenOverFlowingContent(false)}}
+                isOpen={openOverFlowingContent}
+                children={overflowingHtml}
+              />
+            </>
+          )}
         </div>
+
       </section>
     );
   }

@@ -33,7 +33,7 @@ const BestiaryMonsterSpecialActionsPage = forwardRef(
         }
 
         return (
-          <div>
+          <>
             <div className="mb-2">
               <h2 className="font-bold">Lengendary actions:</h2>
               <div className="flex flex-col items-start gap-2 text-sm"> 
@@ -82,7 +82,7 @@ const BestiaryMonsterSpecialActionsPage = forwardRef(
                 ))}
               </div>
             </div>
-          </div>
+          </>
         );
       } catch (error) {
         if (

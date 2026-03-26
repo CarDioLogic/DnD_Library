@@ -24,7 +24,7 @@ const BestiaryMonsterSensesProficienciesResistancesPage  = forwardRef(
         );
 
         return (
-          <div>
+          <>
             {monster.proficiencies?.length > 0 && (
               <div className="mb-2">
                 <span className="text-sm"><strong>Proficiencies:</strong> {formatProficiencies(monster.proficiencies)}</span>
@@ -70,7 +70,7 @@ const BestiaryMonsterSensesProficienciesResistancesPage  = forwardRef(
                 </span>
               </div>
             )}
-          </div>
+          </>
         );
       } catch (error) {
         if (
