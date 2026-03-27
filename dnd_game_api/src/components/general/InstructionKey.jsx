@@ -7,6 +7,7 @@ export default function InstructionKey({
   classNames,
   title,
   isArrow = false,
+  onClickFunc
 }) {
   const [isPressed, setIsPressed] = useState(false);
 
@@ -32,18 +33,30 @@ export default function InstructionKey({
     };
   }, [keyBind]);
 
+  const triggerPress = () => {
+    setIsPressed(true);
+    setTimeout(() => setIsPressed(false), 100);
+  };
+
+  const handleClick = () => {
+    triggerPress();
+    onClickFunc?.();
+  };
+
   const displayKey = isArrow ? arrowMap[keyBind] : keyBind;
 
   return (
     <div
+      onClick={handleClick}
       title={title ?? displayKey}
-      className={`instruction-key-container font-bold flex gap-1 flex-col justify-center items-center ${classNames}`}
+      className={`cursor-pointer instruction-key-container font-bold flex gap-1 flex-col justify-center items-center ${classNames}`}
     >
       <div
         className={`instruction-key px-3 py-1 rounded-md border transition-all duration-100
-        ${isPressed 
-          ? "bg-gray-700 text-white scale-95 shadow-inner" 
-          : "bg-gray-200 text-black shadow"
+        ${
+          isPressed
+            ? "bg-gray-700 text-white scale-95 shadow-inner"
+            : "bg-gray-200 text-black shadow"
         }`}
       >
         {displayKey}

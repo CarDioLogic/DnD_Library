@@ -4,13 +4,13 @@ const ExtraPageContent = ({ isOpen, onClose, children, className = "" }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 max-h-[80vh] flex items-center justify-center bg-black/50 p-4">
-      <div className="relative w-full max-w-2xl max-h-[80vh] grain-wrap rounded-sm">
-        <div className="grain-noise"></div>
-        <div className="page-overlay"></div>
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
+      <div className="relative w-full max-w-2xl max-h-[80%] grain-wrap rounded-sm overflow-vertical-scroll">
+        {/* <div className="grain-noise"></div>
+        <div className="page-overlay"></div> */}
 
         <div
-          className={`relative z-10 max-h-[80vh] overflow-auto border border-gray-500 shadow-inner p-6 rounded-sm text-book-ink font-uncial ${className}`}
+          className={` relative z-10 border border-gray-500 shadow-inner p-6 rounded-sm text-book-ink font-uncial ${className}`}
         >
           <button
             type="button"

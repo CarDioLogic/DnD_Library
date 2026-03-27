@@ -132,7 +132,7 @@ const Page = forwardRef(
 
         <div
           ref={contentRef}
-          className={`h-full relative z-10 overflow-hidden border border-gray-500 shadow-inner p-6 rounded-sm text-book-ink font-uncial ${className}`}
+          className={`${className} h-full relative z-10 overflow-hidden border border-gray-500 shadow-inner book-page-padding rounded-sm text-book-ink font-uncial`}
         >
           {isLoading ? (
             <Loading />

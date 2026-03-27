@@ -1,20 +1,18 @@
 import './App.css'
-// import Monsters from './views/Monsters.jsx';
-import MonstersBookView from './views/MonstersBookView.jsx';
-import SpellsBookView from './views/SpellsBookView.jsx';
+import { useState } from 'react';
+import BookView from './views/BookView.jsx';
+import {AllBooks} from './views/AllBooks.jsx';
 
-import MuteIcon from './components/general/MuteIcon'
+import MainPageIcons from './components/general/MainPageIcons/MainPageIcons.jsx'
 
 function App() {
+  const [currentBook, setCurrentBook] = useState(Object.keys(AllBooks)[0]);
+
   return (
     <>
-        {
-          // <Monsters />
-          // <MonstersBookView/>
-          <SpellsBookView/>
-        }        
-      <MuteIcon/>
-   </>
+      <BookView currentBook={currentBook} />
+      <MainPageIcons setCurrentBook={setCurrentBook} />
+    </>
   )
 }
 

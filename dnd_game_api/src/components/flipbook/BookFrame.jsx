@@ -14,27 +14,44 @@ export default function BookFrame({ children,
   const book = useRef(null);
   const soundPlayer = new SoundPlayer();
 
+  const flipToPreviousPage = () => { 
+    if (!book.current) return;
+    book.current.pageFlip().flipPrev();
+  }
+  const flipToNextPage = () => { 
+    if (!book.current) return;
+    book.current.pageFlip().flipNext();
+  }
+  const flipToFirstPage = () => { 
+    if (!book.current) return;
+    book.current.pageFlip().flip(0);
+  }
+  const flipToLastPage = () => { 
+    if (!book.current) return;
+    const pageFlip = book.current.pageFlip();
+    const lastPageIndex = pageFlip.getPageCount() - 1;
+
+    pageFlip.flip(lastPageIndex);
+  }
+
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (!book.current) return;
 
       if (event.key === 'ArrowLeft') {
-        book.current.pageFlip().flipPrev();
+        flipToPreviousPage();
       }
 
       if (event.key === 'ArrowRight') {
-        book.current.pageFlip().flipNext();
+        flipToNextPage();
       }
 
       if (event.key === '1') {
-        book.current.pageFlip().flip(0);
+        flipToFirstPage();
       }
 
       if (event.key === '0') {
-        const pageFlip = book.current.pageFlip();
-        const lastPageIndex = pageFlip.getPageCount() - 1;
-
-        pageFlip.flip(lastPageIndex);
+        flipToLastPage();
       }
     };
 
@@ -85,20 +102,24 @@ export default function BookFrame({ children,
         </HTMLFlipBook>
         <div className="mt-5 flex gap-10 items-start text-center">
           <InstructionKey
+            onClickFunc={flipToFirstPage}
             keyBind="1"
             label="Beginning"
           />
           <InstructionKey
+            onClickFunc={flipToPreviousPage}
             isArrow={true}
             keyBind="ArrowLeft"
             label="Previous page"
           />
           <InstructionKey
+            onClickFunc={flipToNextPage}
             isArrow={true}
             keyBind="ArrowRight"
             label="Next page"
           />
           <InstructionKey
+            onClickFunc={flipToLastPage}
             keyBind="0"
             label="End"
           />
