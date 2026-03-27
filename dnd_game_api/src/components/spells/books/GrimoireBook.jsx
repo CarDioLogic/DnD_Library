@@ -2,8 +2,8 @@ import BookFrame from "../../flipbook/BookFrame";
 import { useEffect, useMemo, useState } from "react";
 import { fetchSpells } from "../../../../apiClient/spellsApi";
 import GrimoireSpellGeneralDetailsPage from "./GrimoireSpellGeneralDetailsPage";
+import GrimoireSpellExtraDetailsPage from "./GrimoireSpellExtraDetailsPage";
 import Icon from "../../general/Icon";
-
 // import BestiaryMonsterTypeIndexPage from "./BestiaryMonsterTypeIndexPage";
 // import BestiaryMonsterSpecialActionsPage from "./BestiaryMonsterSpecialActionsPage";
 // import BestiaryMonsterActionsPage from "./BestiaryMonsterActionsPage";
@@ -19,7 +19,7 @@ export default function GrimoireBook() {
   const [currentPage, setCurrentPage] = useState(1);
   const [flipToPage, setFlipToPage] = useState(0);
   const [loadingSpells, setLoadingSpells] = useState(false);
-  const pagesPerSpell = 1; //general details + actions
+  const pagesPerSpell = 2; //general details + actions
 
   useEffect(() => {
     async function loadSpells() {
@@ -103,7 +103,7 @@ export default function GrimoireBook() {
   const flipToPageHandler = (itemNbr) => {
     const nbrIndexPages = spellsIndexPages.length;
 
-    const spellPage = (itemNbr) + nbrIndexPages + 3; //extra pages
+    const spellPage = (itemNbr) + nbrIndexPages + 4; //extra pages
 
     setFlipToPage(spellPage);
   };
@@ -142,13 +142,18 @@ export default function GrimoireBook() {
           </p>
         </div>
       </Page>
+      <Page currentPage={currentPage}
+        pageNumber={4}>
+        <div className="border text-center h-full w-full flex flex-col items-center justify-center p-8">
+        </div>
+      </Page>
 
       {spellsIndexPages.map((pageSpells, index) => (
         <IndexPage
           key={`index-page-${index}`}
           flipToPageHandler={flipToPageHandler}
           currentPage={currentPage}
-          pageNumber={index + 4}
+          pageNumber={index + 5}
           items={pageSpells}
           itemCategoryName={pageSpells[0]?.school.name || "Unknown"}
           pagesPerItem={pagesPerSpell}
@@ -160,7 +165,13 @@ export default function GrimoireBook() {
           key={`spell-general-${spell.index}`}
           spellIndex={spell.index}
           currentPage={currentPage}
-          pageNumber={spellsIndexPages.length + 4 + pagesPerSpell * index}
+          pageNumber={spellsIndexPages.length + 5 + pagesPerSpell * index}
+        />,
+        <GrimoireSpellExtraDetailsPage
+          key={`spell-extra-details-${spell.index}`}
+          spellIndex={spell.index}
+          currentPage={currentPage}
+          pageNumber={spellsIndexPages.length + 6 + pagesPerSpell * index}
         />,
       ])}
 

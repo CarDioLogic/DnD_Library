@@ -38,33 +38,85 @@ export async function fetchSpellDetails(index: string, signal?: AbortSignal) {
       spell(index: $index) {
         index
         name
+        desc
+        concentration
+        casting_time
+        duration
+        range
+        ritual
         school {
           index
           name
           desc
-        }
-        desc
-        duration
-        higher_level
+        }        
+      }
+    }
+  `;
+
+  try {
+    const response = await axios.post(
+      url,
+      {
+        query,
+        variables: { index },
+      },
+      {
+        signal,
+      }
+    );
+
+    return response.data.data.spell;
+  } catch (error: any) {
+    console.error("GraphQL error body:", error.response?.data);
+    console.error("GraphQL error:", error);
+    throw error;
+  }
+}
+
+export async function fetchSpellExtraDetails(index: string, signal?: AbortSignal) {
+  const query = `
+    query Spell($index: String!) {
+      spell(index: $index) {
+        index
+        name
         level
-        material
-        range
-        ritual
+        higher_level
+        components
+        attack_type
+        classes {
+          name
+          index
+        }
+        material  
+               
         area_of_effect {
           size
           type
         }
-        concentration
-        casting_time
-        attack_type
         heal_at_slot_level {
           level
           value
+        }        
+        damage {
+          damage_type {
+            name
+            index
+          }
+          damage_at_slot_level {
+            value
+            level
+          }
+          damage_at_character_level {
+            level
+            value
+          }
         }
-        components
-        classes {
-          name
-          index
+        dc {
+          dc_success
+          desc
+          dc_type {
+            full_name
+          }
         }
       }
     }

@@ -25,7 +25,36 @@ const GrimoireSpellGeneralDetailsPage = forwardRef(
       
         return (
           <>
-            <h1>{spell.name}</h1>
+            <div className="">
+              <div className="flex gap-1">
+                <h1 className="text-2xl">{spell.name}</h1>
+
+                { spell.concentration && (
+                  <Icon
+                    key={spell.index}
+                    title={`Cast requires concentrion`}
+                    imgSrc={`/images/misc/spiked-halo.svg`}
+                    altText="class icon"
+                  />
+                )}
+                { spell.ritual && (
+                  <Icon
+                    key={spell.ritual}
+                    title={`Spell is ritual`}
+                    imgSrc={`/images/misc/ritual.svg`}
+                    altText="class icon"
+                  />
+                )}
+              </div>
+              <p>{spell.school.name}</p>
+            </div>            
+            <hr/>
+            <div className="">
+              <p className="text-sm"><strong className="mr-2">Casting time:</strong>{spell.casting_time}</p>
+              <p className="text-sm"><strong className="mr-2">Range:</strong>{spell.range}</p>
+              <p className="text-sm"><strong className="mr-2">Duration:</strong>{spell.duration}</p>
+            </div>
+            <p className="text-xs">{spell.desc}</p>
           </>
         );
       } catch (error) {
