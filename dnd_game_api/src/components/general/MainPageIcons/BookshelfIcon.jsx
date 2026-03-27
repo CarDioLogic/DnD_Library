@@ -2,6 +2,7 @@ import { useState } from "react";
 import Icon from "../Icon";
 import { AllBooks } from "../../../views/AllBooks";
 import Page from "../../flipbook/Page";
+import BookFrontCover from "../../flipbook/BookFrontCover";
 
 export default function BookshelfIcon({ setCurrentBook }) {
   const [bookshelfVisible, setBookshelfVisible] = useState(false);
@@ -32,26 +33,22 @@ export default function BookshelfIcon({ setCurrentBook }) {
             <button
               type="button"
               onClick={() => setBookshelfVisible(false)}
-              className="absolute top-3 right-3 border border-gray-400 rounded-sm px-2 py-1 text-sm bg-white/80"
+              className="close-button"
             >
               X
             </button>
 
-            <h1 className="font-semibold my-5 text-center">Select a book to browse:</h1>
+            <h1 className="font-semibold my-5 text-center text-2xl">Select a book to browse:</h1>
             <div className="flex-1 flex flex-wrap justify-center gap-5 items-center">              
               {Object.keys(AllBooks).map((book) => (
                 <div
                   key={book}
-                  className="cursor-pointer"
+                  className="cursor-pointer text-center"
                   onClick={() => handleBookChange(book)}
                 >
-                  <Page className="book-cover-overlay text-yellow-400">
-                    <div className="border h-[70px] w-[40px] flex flex-col items-center justify-center p-8">
-                      <h1 className="text-center text-xs font-bold mb-4 font-uncial">
-                        {book}
-                      </h1>
-                    </div>
-                  </Page>
+                  <div className="relative w-[100px]">
+                    <BookFrontCover title={book} titleTwSize="text-xs"/>
+                  </div>
 
                   <span className="font-bold font-uncial">{book}</span>
                 </div>

@@ -19,16 +19,14 @@ page-flip-1 -> freesound_community-page-flip-47177
 page-flip-2 -> xpmonster-turning-page-in-a-book-419580
 
 
-To implement: 1
+To implement:
+    -Make the book responsive
 
     Add more books ( armor, items, etc)
     -add component to select books
 
-    -Make the book responsive
+    -fix and finalize the styles
 
-    Low priority:
-        -A sort of "separators" on the side of the book representing each monster type
-        -maybe a separators component for the book?
 
 
 

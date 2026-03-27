@@ -15,7 +15,7 @@ const ExtraPageContent = ({ isOpen, onClose, children, className = "" }) => {
           <button
             type="button"
             onClick={onClose}
-            className="absolute top-3 right-3 border border-gray-400 rounded-sm px-2 py-1 text-sm bg-white/80"
+            className="close-button"
           >
             X
           </button>

@@ -15,6 +15,21 @@
   --color-book-border: var(--color-book-border);
 }
 
+.close-button {
+  cursor: pointer;
+  position: absolute;
+  top: 0.75rem;   
+  right: 0.75rem; 
+  border: 1px solid #9ca3af; 
+  border-radius: 0.125rem;   
+  padding: 0.25rem 0.5rem;   
+  font-size: 0.875rem; 
+  font-weight: 700;    
+  background-color: white;
+  color: black;
+  font-family: var(--font-uncial); 
+}
+
 .grain-wrap {
   position: relative;
   isolation: isolate;
@@ -128,4 +143,35 @@
 
 .overflow-vertical-scroll {
   overflow-y: auto !important;
+}
+
+.landscape-only {
+  display: flex;
+}
+
+@media screen and (orientation: portrait) and (max-width: 610px) {
+  .landscape-only::after {
+    content: "Not supported for this screen (use landscape mode)";
+    
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    padding: 20px 30px;
+    background: rgba(0, 0, 0, 0.85);
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    border-radius: 10px;
+    
+    z-index: 9999;
+  }
+}
+
+@media screen and (orientation: landscape) {
+  .landscape-only {
+    /* padding-inline: 100px; */
+    display: flex;
+  }
 }
