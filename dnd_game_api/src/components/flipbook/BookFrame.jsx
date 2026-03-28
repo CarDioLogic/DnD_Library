@@ -99,7 +99,6 @@ export default function BookFrame({
   const onFlip = useCallback(
     (e) => {
       const currentPage = e.data;
-      console.log('Current page:', currentPage);
       setCurrentPage(currentPage);
       soundPlayer.playPageFlip2();
     },

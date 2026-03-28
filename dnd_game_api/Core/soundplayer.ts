@@ -13,7 +13,6 @@ export default class SoundPlayer {
 
   playFile(fileName: string) {
     const isMuted = getIsMuted();
-    console.log("is it muted", isMuted);
 
     if (isMuted) return;
 

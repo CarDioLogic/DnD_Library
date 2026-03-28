@@ -21,10 +21,9 @@ const IndexPage = forwardRef(
 
           <ul className="ml-4 mt-2 space-y-1">
             {items.map((item) => (
-              <div className="flex justify-between">
+              <div key={item.index} className="flex justify-between">
                 <li title={item.itemNbr}
-                  className="cursor-pointer page-text-sm flex"
-                  key={item.index}
+                  className="cursor-pointer page-text-sm flex"                 
                   onClick={(e) => {
                     e.stopPropagation();
                     flipToPageHandler(item.itemNbr);

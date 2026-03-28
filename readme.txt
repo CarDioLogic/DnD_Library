@@ -21,7 +21,7 @@ page-flip-2 -> xpmonster-turning-page-in-a-book-419580
 
 To implement:
     Add more books ( armor, items, etc)
-    -add component to select books
+
 
     -fix and finalize the styles
 
