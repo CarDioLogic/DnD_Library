@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useRef, forwardRef } from "react";
 import Page from "../../flipbook/Page";
+import Icon from "../../general/Icon";
 import { fetchMonsterDetails } from "../../../../apiClient/monsterApi";
 import { baseApiUrl } from "../../../../Core/constants";
-import Icon from "../../general/Icon";
 import { ABILITIES } from "../../../../Data/Abilities";
 import { formatAbilityModifier, formatArmorClass } from "../../../../Core/helpers";
 

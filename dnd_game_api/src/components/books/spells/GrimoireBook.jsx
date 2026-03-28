@@ -1,18 +1,15 @@
 import BookFrame from "../../flipbook/BookFrame";
-import { useEffect, useMemo, useState } from "react";
-import { fetchSpells } from "../../../../apiClient/spellsApi";
-import GrimoireSpellGeneralDetailsPage from "./GrimoireSpellGeneralDetailsPage";
-import GrimoireSpellExtraDetailsPage from "./GrimoireSpellExtraDetailsPage";
-import Icon from "../../general/Icon";
-// import BestiaryMonsterTypeIndexPage from "./BestiaryMonsterTypeIndexPage";
-// import BestiaryMonsterSpecialActionsPage from "./BestiaryMonsterSpecialActionsPage";
-// import BestiaryMonsterActionsPage from "./BestiaryMonsterActionsPage";
-// import BestiaryMonsterSensesProficienciesResistancesPage  from "./BestiaryMonsterSensesProficienciesResistancesPage";
 import BookFrontCover from "../../flipbook/BookFrontCover";
 import BookBackCover from "../../flipbook/BookBackCover";
 import IndexPage from "../../flipbook/IndexPage";
 import Page from "../../flipbook/Page";
+import Icon from "../../general/Icon";
 import Loading from "../../general/Loading";
+import { useEffect, useMemo, useState } from "react";
+import { fetchSpells } from "../../../../apiClient/spellsApi";
+import GrimoireSpellGeneralDetailsPage from "./GrimoireSpellGeneralDetailsPage";
+import GrimoireSpellExtraDetailsPage from "./GrimoireSpellExtraDetailsPage";
+
 
 export default function GrimoireBook() {
   const [spells, setSpells] = useState([]);

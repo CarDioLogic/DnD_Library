@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, forwardRef } from "react";
 import Page from "../../flipbook/Page";
-import { fetchSpellDetails } from "../../../../apiClient/spellsApi";
 import Icon from "../../general/Icon";
+import { fetchSpellDetails } from "../../../../apiClient/spellsApi";
 import { ABILITIES } from "../../../../Data/Abilities";
 import { formatAbilityModifier, } from "../../../../Core/helpers";
 

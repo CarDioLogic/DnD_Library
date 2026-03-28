@@ -1,9 +1,8 @@
 import { useCallback, useEffect, useRef, forwardRef } from "react";
 import Page from "../../flipbook/Page";
-import { fetchMonsterSensesProficienciesReactionsResistances } from "../../../../apiClient/monsterApi";
 import Icon from "../../general/Icon";
 import { formatSenses, formatProficiencies } from "../../../../Core/helpers";
-
+import { fetchMonsterSensesProficienciesReactionsResistances } from "../../../../apiClient/monsterApi";
 
 const BestiaryMonsterSensesProficienciesResistancesPage  = forwardRef(
   ({ monsterIndex, pageNumber, currentPage }, ref) => {

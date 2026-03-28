@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Icon from "../Icon";
-import { AllBooks } from "../../../views/AllBooks";
+import { AllBooks } from "../../books/AllBooks";
 import Page from "../../flipbook/Page";
 import BookFrontCover from "../../flipbook/BookFrontCover";
 

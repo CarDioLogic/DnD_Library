@@ -21,16 +21,19 @@ const IndexPage = forwardRef(
 
           <ul className="ml-4 mt-2 space-y-1">
             {items.map((item) => (
-              <li title={item.itemNbr}
-                className="cursor-pointer page-text-sm flex"
-                key={item.index}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  flipToPageHandler(item.itemNbr);
-                }}
-              >
-                {Math.round(item.itemNbr / pagesPerItem)}. {item.name} {item.indexExtraContent}
-              </li>
+              <div className="flex justify-between">
+                <li title={item.itemNbr}
+                  className="cursor-pointer page-text-sm flex"
+                  key={item.index}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    flipToPageHandler(item.itemNbr);
+                  }}
+                >
+                  {Math.round(item.itemNbr / pagesPerItem)}. {item.name} 
+                </li>
+                <div className="flex">{item.indexExtraContent}</div>
+              </div>
             ))}
           </ul>
         </div>

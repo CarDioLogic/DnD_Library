@@ -1,7 +1,7 @@
 import './App.css'
 import { useState } from 'react';
 import BookView from './views/BookView.jsx';
-import {AllBooks} from './views/AllBooks.jsx';
+import {AllBooks} from './Components/Books/AllBooks.jsx';
 
 import MainPageIcons from './components/general/MainPageIcons/MainPageIcons.jsx'
 
