@@ -5,9 +5,9 @@ export default function Icon({imgSrc, altText, label, orientation = "horizontal"
       <img 
           src={imgSrc}
           alt={altText}
-          className={`h-6 w-6 ${className}`}
+          className={`page-icon ${className}`}
       />
-      <p className="break-words">{label}</p>
+      <p className="break-words page-text-sm">{label}</p>
     </div>
   )
 }

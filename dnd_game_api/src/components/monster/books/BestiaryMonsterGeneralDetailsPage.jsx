@@ -31,7 +31,7 @@ const BestiaryMonsterGeneralDetailsPage = forwardRef(
               title={monster.name}
               src={`${baseApiUrl + monster.image}`}
               alt={monster.name}
-              className="h-48 border rounded-[50%] mb-4 text-center mx-auto"
+              className="page-monster-avatar border rounded-[50%] mb-4 text-center mx-auto"
             />
 
             <section>
@@ -41,7 +41,7 @@ const BestiaryMonsterGeneralDetailsPage = forwardRef(
               </div>
             </section>
             
-            <h1 title="" className="text-xl font-bold break-words leading-none">{monster.name}</h1>
+            <h1 title="" className="page-text-xl font-bold break-words leading-none">{monster.name}</h1>
             <p title="Monster type" className="break-words">{`${monster.type} ${monster.subtype ?? ""}`}</p>
             <hr className="my-2"></hr>
 
@@ -68,22 +68,21 @@ const BestiaryMonsterGeneralDetailsPage = forwardRef(
                 altText="heart icon"
                 label={`${monster.hit_points} (${monster.hit_points_roll}) HP`}
               />
-            </div>    
-            <div className="flex justify-between mb-2">
               <Icon
                 title="Armor class"
                 imgSrc={`/images/misc/armor.svg`}
                 altText="heart icon"
                 label={formatArmorClass(monster.armor_class)}
               />
-            </div>          
+            </div>    
+    
 
             <div className="mt-4">
               <div className="flex justify-between">              
                 {ABILITIES.map(ability => (
                     <div className="text-center" key={ability}>
-                      <p>{ability.slice(0,3).toUpperCase()}</p>
-                      <p className="font-bold text-xs">{monster[ability]} ({formatAbilityModifier(monster[ability])})</p>
+                      <p className="page-text-base">{ability.slice(0,3).toUpperCase()}</p>
+                      <p className="font-bold page-text-xs">{monster[ability]} ({formatAbilityModifier(monster[ability])})</p>
                     </div>
                 ))}
               </div>

@@ -7,7 +7,7 @@ export default function AvatarCard({ title, subtitle, imageSrc, classes, onClick
 
       <div>
         <div className={`${isSelected ? 'font-bold' : 'font-normal'}`}>{title}</div>
-        {subtitle && <div className="text-sm text-gray-500">{subtitle}</div>}
+        {subtitle && <div className="page-text-sm text-gray-500">{subtitle}</div>}
       </div>
     </div>
   );

@@ -2,7 +2,7 @@ import { forwardRef } from "react";
 import Page from "./Page";
 
 const BookFrontCover = forwardRef(
-  ({ pageNumber, currentPage, title, classNames, titleTwSize="text-4xl" }, ref) => {
+  ({ pageNumber, currentPage, title, classNames, titleTwSize="page-text-4xl" }, ref) => {
 
     return (
       <Page

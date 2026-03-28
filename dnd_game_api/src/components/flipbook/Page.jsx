@@ -132,7 +132,7 @@ const Page = forwardRef(
 
         <div
           ref={contentRef}
-          className={`${className} h-full relative z-10 overflow-hidden border border-gray-500 shadow-inner book-page-padding rounded-sm text-book-ink font-uncial`}
+          className={`${className} page-container h-full relative z-10 overflow-hidden border border-gray-500 shadow-inner book-page-padding rounded-sm text-book-ink font-uncial`}
         >
           {isLoading ? (
             <Loading />
@@ -144,7 +144,7 @@ const Page = forwardRef(
 
           {pageNumber !== undefined && (
             <p
-              className="absolute bottom-2 right-4 text-sm"
+              className="absolute bottom-2 right-4 page-text-sm"
               title={`User currently on page: ${currentPage}`}
             >
               {pagePrefix}
@@ -155,7 +155,7 @@ const Page = forwardRef(
           {overflowingHtml.length > 0 && (
             <>
               <div onClick={() => {setOpenOverFlowingContent(true)}}
-                className="absolute top-3 right-3 border border-gray-400 rounded-sm px-2 py-1 text-sm cursor-pointer">
+                className="absolute top-3 right-3 border border-gray-400 rounded-sm px-2 py-1 page-text-sm cursor-pointer">
                 <Icon                  
                   title={`View extra page content`}
                   imgSrc={`/images/general/foldedPaper.svg`}

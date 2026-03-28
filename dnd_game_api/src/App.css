@@ -15,6 +15,32 @@
   --color-book-border: var(--color-book-border);
 }
 
+.page-container{
+  container-type: inline-size;
+}
+
+.page-monster-avatar{
+  width: clamp(70px, 50cqw, 170px);
+}
+
+.page-icon{
+  width: clamp(15px, 7cqw, 30px);
+}
+
+.page-text-xs  { font-size: clamp(9px, 3.4cqw, 13px); }
+.page-text-sm  { font-size: clamp(11px, 4cqw, 16px); }
+.page-text-base{ font-size: clamp(13px, 4.6cqw, 18px); }
+.page-text-lg  { font-size: clamp(14px, 5.1cqw, 20px); }
+.page-text-xl  { font-size: clamp(16px, 5.7cqw, 22px); }
+.page-text-2xl { font-size: clamp(19px, 6.8cqw, 27px); }
+.page-text-3xl { font-size: clamp(24px, 8.6cqw, 34px); }
+.page-text-4xl { font-size: clamp(28px, 10.3cqw, 41px); }
+.page-text-5xl { font-size: clamp(38px, 13.7cqw, 55px); }
+.page-text-6xl { font-size: clamp(47px, 17.1cqw, 69px); }
+.page-text-7xl { font-size: clamp(57px, 20.6cqw, 82px); }
+.page-text-8xl { font-size: clamp(75px, 27.4cqw, 110px); }
+.page-text-9xl { font-size: clamp(100px, 36.6cqw, 146px); }
+
 .close-button {
   cursor: pointer;
   position: absolute;

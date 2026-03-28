@@ -52,7 +52,7 @@ const BestiaryMonsterActionsPage = forwardRef(
             {monster.actions && (
               <div className="mb-2">
                 <h2 className="font-bold">Actions:</h2>
-                <div className="flex flex-col items-start gap-2 text-sm">
+                <div className="flex flex-col items-start gap-2 page-text-sm">
                   {monster.actions.map((action, actionIndex) => (
                     <div
                       key={actionIndex}

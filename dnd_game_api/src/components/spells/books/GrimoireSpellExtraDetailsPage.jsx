@@ -27,18 +27,18 @@ const GrimoireSpellExtraDetailsPage = forwardRef(
           <>
               { spell.higher_level && (
                 <div>
-                  <p className="text-sm"><strong className="mr-2">Higher level:</strong></p>
-                  <p className="text-xs">{spell.higher_level}</p>
+                  <p className="page-text-sm"><strong className="mr-2">Higher level:</strong></p>
+                  <p className="page-text-xs">{spell.higher_level}</p>
                 </div>
               )}   
-              <p className="text-sm"><strong className="mr-2">Level:</strong>{spell.level}</p>
-              <p className="text-sm"><strong className="mr-2">Component:</strong>{spell.components.join(",")}</p>         
+              <p className="page-text-sm"><strong className="mr-2">Level:</strong>{spell.level}</p>
+              <p className="page-text-sm"><strong className="mr-2">Component:</strong>{spell.components.join(",")}</p>         
               { spell.attack_type && (
-                <p className="text-sm"><strong className="mr-2">Attack type:</strong>{spell.attack_type}</p>
+                <p className="page-text-sm"><strong className="mr-2">Attack type:</strong>{spell.attack_type}</p>
               )}
                {spell.classes.length > 0 && (
                 <div className="flex gap-1 items-center">
-                  <p className="text-sm"><strong className="mr-2">Classes:</strong></p>
+                  <p className="page-text-sm"><strong className="mr-2">Classes:</strong></p>
                     {
                         spell.classes.map(c => (
                           <Icon
@@ -52,10 +52,10 @@ const GrimoireSpellExtraDetailsPage = forwardRef(
                 </div> 
                )}      
               { spell.area_of_effect && (
-                <p className="text-sm"><strong className="mr-2">Area of effect:</strong> {`${spell.area_of_effect.type} (${spell.area_of_effect.size}m)`}</p>
+                <p className="page-text-sm"><strong className="mr-2">Area of effect:</strong> {`${spell.area_of_effect.type} (${spell.area_of_effect.size}m)`}</p>
               )}  
               {spell.heal_at_slot_level && (
-                <p className="text-sm">
+                <p className="page-text-sm">
                   <strong className="mr-2">Heal levels:</strong>
                   {spell.heal_at_slot_level
                     .map(h => `${h.level} (${h.value})`)
@@ -65,7 +65,7 @@ const GrimoireSpellExtraDetailsPage = forwardRef(
               {spell.damage && (
                 <div>
                   <div className="flex gap-1 items-center">
-                    <p className="text-sm">
+                    <p className="page-text-sm">
                       <strong className="mr-2">Spell damage type:</strong>
                     </p>
                     <Icon
@@ -74,7 +74,7 @@ const GrimoireSpellExtraDetailsPage = forwardRef(
                     />
                   </div>
                   { spell.damage.damage_at_slot_level && (
-                    <p className="text-sm">
+                    <p className="page-text-sm">
                       <strong className="mr-2">Damage per spell level:</strong>
                       {spell.damage.damage_at_slot_level
                         .map(d => `${d.level} (${d.value})`)
@@ -82,7 +82,7 @@ const GrimoireSpellExtraDetailsPage = forwardRef(
                     </p>
                   )}
                   { spell.damage.damage_at_character_level && (
-                    <p className="text-sm">
+                    <p className="page-text-sm">
                       <strong className="mr-2">Damage per character level:</strong>
                       {spell.damage.damage_at_character_level
                         .map(d => `${d.level} (${d.value})`)
@@ -93,12 +93,12 @@ const GrimoireSpellExtraDetailsPage = forwardRef(
               )}
               { spell.dc && (
                 <>
-                  <p className="text-sm" title={spell.dc.dc_success}>
+                  <p className="page-text-sm" title={spell.dc.dc_success}>
                     <strong className="mr-2">DC success:</strong>
                     {spell.dc.dc_success}
                   </p>
                   <div className="flex gap-1 items-center">
-                    <p className="text-sm">
+                    <p className="page-text-sm">
                       <strong className="mr-2">DC type:</strong>
                     </p>
                     <Icon
@@ -110,7 +110,7 @@ const GrimoireSpellExtraDetailsPage = forwardRef(
               )}    
 
               { spell.material && (
-                <p className="text-sm"><strong className="mr-2">Materials:</strong>{spell.material}</p>
+                <p className="page-text-sm"><strong className="mr-2">Materials:</strong>{spell.material}</p>
               )}  
           </>          
         );

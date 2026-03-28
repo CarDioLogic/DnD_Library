@@ -36,7 +36,7 @@ const BestiaryMonsterSpecialActionsPage = forwardRef(
           <>
             <div className="mb-2">
               <h2 className="font-bold">Lengendary actions:</h2>
-              <div className="flex flex-col items-start gap-2 text-sm"> 
+              <div className="flex flex-col items-start gap-2 page-text-sm"> 
                {monster.legendary_actions?.map((action, actionIndex) => (
                   <div key={actionIndex} className="italic w-full" title={action.desc}>
                     <div className="">
@@ -65,12 +65,12 @@ const BestiaryMonsterSpecialActionsPage = forwardRef(
 
              <div className="mb-2">
               <h2 className="font-bold">Special abilities:</h2>
-              <div className="flex flex-col items-start gap-2 text-sm"> 
+              <div className="flex flex-col items-start gap-2 page-text-sm"> 
                 {monster.special_abilities?.map((sa, actionIndex) => (
                   <div key={actionIndex} className="italic w-full" title={sa.desc}>
                     <div>
                       <p className="font-semibold">{sa.name}:</p>
-                      <p className="text-xs">{sa.desc}:</p>
+                      <p className="page-text-xs">{sa.desc}:</p>
 
                       {(Array.isArray(sa.usage) ? sa.usage : sa.usage ? [sa.usage] : []).map((us, index) => (
                         <div key={index} className="flex items-center justify-end gap-2">

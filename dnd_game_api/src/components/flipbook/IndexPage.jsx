@@ -13,7 +13,7 @@ const IndexPage = forwardRef(
         pageNumber={pageNumber}
       >
         <div>
-          <h1 className="underline text-center mb-4">Index:</h1>
+          <h1 className="underline text-center">Index:</h1>
 
           {itemCategoryName && (
             <h2 className="font-bold italic">{itemCategoryName}'s:</h2>
@@ -22,7 +22,7 @@ const IndexPage = forwardRef(
           <ul className="ml-4 mt-2 space-y-1">
             {items.map((item) => (
               <li title={item.itemNbr}
-                className="cursor-pointer text-sm flex"
+                className="cursor-pointer page-text-sm flex"
                 key={item.index}
                 onClick={(e) => {
                   e.stopPropagation();

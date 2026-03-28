@@ -38,7 +38,7 @@ export default function BookshelfIcon({ setCurrentBook }) {
               X
             </button>
 
-            <h1 className="font-semibold my-5 text-center text-2xl">Select a book to browse:</h1>
+            <h1 className="font-semibold my-5 text-center page-text-2xl">Select a book to browse:</h1>
             <div className="flex-1 flex flex-wrap justify-center gap-5 items-center">              
               {Object.keys(AllBooks).map((book) => (
                 <div
@@ -47,7 +47,7 @@ export default function BookshelfIcon({ setCurrentBook }) {
                   onClick={() => handleBookChange(book)}
                 >
                   <div className="relative w-[100px]">
-                    <BookFrontCover title={book} titleTwSize="text-xs"/>
+                    <BookFrontCover title={book} titleTwSize="page-text-xs"/>
                   </div>
 
                   <span className="font-bold font-uncial">{book}</span>

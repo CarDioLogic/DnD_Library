@@ -75,7 +75,7 @@ export default function BestiaryBook() {
   }
 
   const monstersIndexPages = useMemo(() => {
-    return paginateMonsters(monsters, 13);
+    return paginateMonsters(monsters, 12);
   }, [monsters]);
 
   const addExtraPageAtEnd = () => {
@@ -117,13 +117,13 @@ export default function BestiaryBook() {
       <Page currentPage={currentPage}
         pageNumber={2}>
         <div className="border text-center h-full w-full flex flex-col items-center justify-center p-8">
-          <h1 className="text-2xl font-bold mb-4">Welcome to the Bestiary!</h1>
+          <h1 className="page-text-2xl font-bold mb-4">Welcome to the Bestiary!</h1>
         </div>
       </Page>
       <Page currentPage={currentPage}
         pageNumber={3}>
         <div className="border text-center h-full w-full flex flex-col items-center justify-center p-8">
-          <h1 className="text-2xl font-bold mb-4">Introduction</h1>
+          <h1 className="page-text-2xl font-bold mb-4">Introduction</h1>
           <p className="text">
             This tome contains detailed information about various monsters. Use the index to find specific creatures and learn about their traits, abilities, and lore.
           </p>
@@ -178,7 +178,7 @@ export default function BestiaryBook() {
 
       <Page currentPage={currentPage}>
         <div className="border outline outline-offset-15 outline-2 outline-dashed outline-gray-500 text-center h-full w-full flex flex-col items-center justify-center p-8">
-          <p className="text-lg text-center">
+          <p className="page-text-lg text-center">
             Thank you for exploring the Bestiary! We hope you found the information about various monsters insightful and engaging.
           </p>
         </div>

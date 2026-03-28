@@ -27,7 +27,7 @@ const GrimoireSpellGeneralDetailsPage = forwardRef(
           <>
             <div className="">
               <div className="flex gap-1">
-                <h1 className="text-2xl">{spell.name}</h1>
+                <h1 className="page-text-2xl">{spell.name}</h1>
 
                 { spell.concentration && (
                   <Icon
@@ -50,11 +50,11 @@ const GrimoireSpellGeneralDetailsPage = forwardRef(
             </div>            
             <hr/>
             <div className="">
-              <p className="text-sm"><strong className="mr-2">Casting time:</strong>{spell.casting_time}</p>
-              <p className="text-sm"><strong className="mr-2">Range:</strong>{spell.range}</p>
-              <p className="text-sm"><strong className="mr-2">Duration:</strong>{spell.duration}</p>
+              <p className="page-text-sm"><strong className="mr-2">Casting time:</strong>{spell.casting_time}</p>
+              <p className="page-text-sm"><strong className="mr-2">Range:</strong>{spell.range}</p>
+              <p className="page-text-sm"><strong className="mr-2">Duration:</strong>{spell.duration}</p>
             </div>
-            <p className="text-xs">{spell.desc}</p>
+            <p className="page-text-xs">{spell.desc}</p>
           </>
         );
       } catch (error) {
