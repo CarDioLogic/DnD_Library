@@ -2,7 +2,6 @@ import { useCallback, useEffect, useRef, forwardRef } from "react";
 import Page from "../../flipbook/Page";
 import { fetchEquipmentDetails } from "../../../../apiClient/equipmentsApi";
 import Icon from "../../general/Icon";
-import { div } from "three/tsl";
 
 type Props = {
   equipmentIndex: string;
@@ -180,7 +179,7 @@ const EquipmentsGeneralDetailsPage = forwardRef<HTMLDivElement, Props>(
                 )}
               </div>
             )}
-            
+
             {equipment.quantity && (
               <>
               <p className="mt-2 text-end"><strong>Quantity:</strong>{equipment.quantity}x</p>
