@@ -120,7 +120,197 @@ export async function fetchEquipments(limit:number = 500, signal?: AbortSignal) 
 
 export async function fetchEquipmentDetails(index: string, signal?: AbortSignal) {
   const query = `
+    query Equipment($index: String!) {
+      equipment(index: $index) {
+        ... on Armor {
+          index
+          name
+          cost {
+            quantity
+            unit
+          }
+          weight
+          str_minimum
+          stealth_disadvantage
+          armor_category
+          gear_category {
+            name
+          }
+          equipment_category {
+            name
+          }
+          armor_class {
+            base
+            dex_bonus
+            max_bonus
+          }
+          properties {
+            name
+            desc
+          }
+        }
+        ... on Weapon {
+          index
+          name
+          
+          cost {
+            quantity
+            unit
+          }
+          weight
+          gear_category {
+            name
+          }
+          equipment_category {
+            name
+          }
+          properties {
+            name
+            desc
+          }
+          damage {
+            damage_type {
+              name
+              index
+            }
+            damage_dice
+          }
+          range {
+            normal
+            long
+          }
+          throw_range {
+            long
+            normal
+          }
+          two_handed_damage {
+            damage_type {
+              index
+              name
+            }
+            damage_dice
+          }
+          weapon_range
+          weapon_category
+          category_range
+        }
+        ... on Tool {
+          index
+          name
+          gear_category {
+            index
+            name
+          }
+          equipment_category {
+            index
+            name
+          }
+          cost {
+            unit
+            quantity
+          }
+          properties {
+            name
+            desc
+          }
+          tool_category
+          weight
+        }
+        ... on Gear {
+          index
+                name
+          gear_category {
+            index
+            name
+          }
+          equipment_category {
+            index
+            name
+          }
+          cost {
+            unit
+            quantity
+          }
+          properties {
+            name
+            desc
+          }
+          weight
+        }
+        ... on Pack {
+          index
+                name
+          gear_category {
+            index
+            name
+          }
+          equipment_category {
+            index
+            name
+          }
+          cost {
+            unit
+            quantity
+          }
+          properties {
+            name
+            desc
+          }
+          
+          weight
 
+        }
+        ... on Ammunition {
+          index
+                name
+          gear_category {
+            index
+            name
+          }
+          equipment_category {
+            index
+            name
+          }
+          cost {
+            unit
+            quantity
+          }
+          properties {
+            name
+            desc
+          }      
+          weight
+          quantity
+        }
+        ... on Vehicle {
+          index
+                name
+          gear_category {
+            index
+            name
+          }
+          equipment_category {
+            index
+            name
+          }
+          cost {
+            unit
+            quantity
+          }
+          properties {
+            name
+            desc
+          }
+          
+          weight
+          speed {
+            unit
+            quantity
+          }
+          vehicle_category
+        }
+      }
+    }
   `;
 
   try {
@@ -133,7 +323,7 @@ export async function fetchEquipmentDetails(index: string, signal?: AbortSignal)
       { signal }
     );
 
-    return response.data.data.condition;
+    return response.data.data.equipment;
   } catch (error: any) {
     console.error("GraphQL error body:", error.response?.data);
     console.error("GraphQL error:", error);

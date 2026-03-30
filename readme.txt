@@ -20,8 +20,8 @@ page-flip-2 -> xpmonster-turning-page-in-a-book-419580
 
 
 To implement:
-    Add more books ( armor, items, etc)
 
+    -item after morning start is failing
 
     -fix and finalize the styles
 

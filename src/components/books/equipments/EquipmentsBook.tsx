@@ -16,7 +16,7 @@ export default function EquipmentsBook() {
   const [flipToPage, setFlipToPage] = useState(0);
   const [loadingEquipments, setLoadingEquipments] = useState(false);
 
-  const pagesPerAilment = 1;
+  const pagesPerEquipment = 1;
 
   useEffect(() => {
     async function loadEquipments() {
@@ -24,7 +24,6 @@ export default function EquipmentsBook() {
 
       try {
         const data = await fetchEquipments();
-        console.log("data fetched", data)
 
         const sorted = [...data].sort((a, b) => {
           const eqA = a.equipment_category?.name ?? "";
@@ -85,7 +84,7 @@ export default function EquipmentsBook() {
         itemNbr,
       });
 
-      itemNbr += pagesPerAilment;
+      itemNbr += pagesPerEquipment;
       resetCounter++;
       previousEquipmentCat = item.equipment_category?.name;
       previousGearCat = item.gear_category?.name;
@@ -109,20 +108,20 @@ export default function EquipmentsBook() {
   const flipToPageHandler = (itemNbr) => {
     const numberOfIndexPages = equipmentsIndexPages.length;
 
-    const ailmentPage =
+    const equipmentPage =
       itemNbr +
       numberOfIndexPages +
       3 +
       (shouldAddExtraPageAfterIndex ? 1 : 0);
 
-    setFlipToPage(ailmentPage);
+    setFlipToPage(equipmentPage);
   };
 
   if (loadingEquipments) {
     return <Loading />;
   }
 
-  const ailmentStartOffset =
+  const equipmentsStartOffset =
     equipmentsIndexPages.length + (shouldAddExtraPageAfterIndex ? 5 : 4);
 
   const bookPages = [];
@@ -178,7 +177,7 @@ export default function EquipmentsBook() {
             .filter(Boolean)
             .join(" - ") || "Unknown"
         }
-        pagesPerItem={pagesPerAilment}
+        pagesPerItem={pagesPerEquipment}
       />
     );
   });
@@ -191,19 +190,19 @@ export default function EquipmentsBook() {
     );
   }
 
-  // equipments.forEach((ailment, index) => {
-  //   const basePageNumber = ailmentStartOffset + pagesPerAilment * index;
-  //   bookPages.push(
-  //     <EquipmentsGeneralDetailsPage
-  //       // ailmentType={ailment.type}
-  //       key={`ailment-general-${ailment.index}`}
-  //       ailmentIndex={ailment.index}
-  //       currentPage={currentPage}
-  //       pageNumber={basePageNumber}
-  //     />
-  //   );
+  equipments.forEach((equipment, index) => {
+    const basePageNumber = equipmentsStartOffset + pagesPerEquipment * index;
+    bookPages.push(
+      <EquipmentsGeneralDetailsPage
+        // equipmentType={equipment.type}
+        key={`equipment-general-${equipment.index}`}
+        equipmentIndex={equipment.index}
+        currentPage={currentPage}
+        pageNumber={basePageNumber}
+      />
+    );
 
-  // });
+  });
 
   if (shouldAddExtraPageAtEnd) {
     bookPages.push(

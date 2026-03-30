@@ -102,20 +102,21 @@ const Page = forwardRef(
             rect.right > parentRect.right ||
             rect.top < parentRect.top ||
             rect.bottom > parentRect.bottom;
-            console.log("PARENT", {
-              pageNumber,
-              currentPage,
-              width: parentRect.width,
-              height: parentRect.height,
-              top: parentRect.top,
-              right: parentRect.right,
-              bottom: parentRect.bottom,
-              left: parentRect.left,
-              scrollHeight: el.scrollHeight,
-              clientHeight: el.clientHeight,
-              scrollWidth: el.scrollWidth,
-              clientWidth: el.clientWidth,
-            });
+            //for page debugging
+            // console.log("PARENT", {
+            //   pageNumber,
+            //   currentPage,
+            //   width: parentRect.width,
+            //   height: parentRect.height,
+            //   top: parentRect.top,
+            //   right: parentRect.right,
+            //   bottom: parentRect.bottom,
+            //   left: parentRect.left,
+            //   scrollHeight: el.scrollHeight,
+            //   clientHeight: el.clientHeight,
+            //   scrollWidth: el.scrollWidth,
+            //   clientWidth: el.clientWidth,
+            // });
 
             child.classList.remove("invisible");
           if (isOverflowing) {
@@ -127,7 +128,6 @@ const Page = forwardRef(
           }
         });
 
-        console.log(overflowingHtml)
         setOverflowingHtml(overflowingHtml);
 
         if (pageNumber === 421) {
