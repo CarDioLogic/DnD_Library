@@ -13,7 +13,7 @@ bg black: 000
 fr red: B41F1F
 
 sounds:
-pixelaby
+pixelbay (https://pixabay.com/)
 
 page-flip-1 -> freesound_community-page-flip-47177
 page-flip-2 -> xpmonster-turning-page-in-a-book-419580
