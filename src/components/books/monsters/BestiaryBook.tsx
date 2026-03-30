@@ -83,7 +83,7 @@ export default function BestiaryBook() {
 
   const shouldAddExtraPageAfterIndex = monstersIndexPages.length % 2 == 0;
 
-  const shouldAddExtraPageAtEnd = true;
+  const shouldAddExtraPageAtEnd = (monstersIndexPages.length +  (shouldAddExtraPageAfterIndex ? 1 : 0) + (monsters.length * pagesPerMonster)) % 2 != 0;
 
   const flipToPageHandler = (itemNbr) => {
     const numberOfIndexPages = monstersIndexPages.length;

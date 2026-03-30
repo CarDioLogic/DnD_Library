@@ -103,7 +103,7 @@ export default function EquipmentsBook() {
 
   const shouldAddExtraPageAfterIndex = equipmentsIndexPages.length % 2 == 0;
 
-  const shouldAddExtraPageAtEnd = true;
+  const shouldAddExtraPageAtEnd = (equipmentsIndexPages.length + (shouldAddExtraPageAfterIndex ? 1 : 0) + (equipments.length * pagesPerEquipment)) % 2 != 0;
 
   const flipToPageHandler = (itemNbr) => {
     const numberOfIndexPages = equipmentsIndexPages.length;
@@ -207,6 +207,7 @@ export default function EquipmentsBook() {
   if (shouldAddExtraPageAtEnd) {
     bookPages.push(
       <Page key="extra-at-end" currentPage={currentPage}>
+        Extra page
         <div className="border text-center h-full w-full flex flex-col items-center justify-center p-8" />
       </Page>
     );

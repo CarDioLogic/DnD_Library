@@ -87,7 +87,7 @@ export default function GrimoireBook() {
 
   const shouldAddExtraPageAfterIndex = ailmentsIndexPages.length % 2 == 0;
 
-  const shouldAddExtraPageAtEnd = true;
+  const shouldAddExtraPageAtEnd = (ailmentsIndexPages.length +  (shouldAddExtraPageAfterIndex ? 1 : 0) + (ailments.length * pagesPerAilment)) % 2 != 0;
 
   const flipToPageHandler = (itemNbr) => {
     const numberOfIndexPages = ailmentsIndexPages.length;
