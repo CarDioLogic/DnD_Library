@@ -3,7 +3,7 @@ export default function Icon({imgSrc, altText, label, orientation = "horizontal"
     <div title={title ?? ""}
       className={`flex gap-1 ${orientation === "vertical" ? "flex-col" : "flex-row"} ${parentClasses}`}>
       <img 
-          src={imgSrc}
+          src={`${import.meta.env.BASE_URL}${imgSrc}`}
           alt={altText}
           className={`page-icon ${className}`}
       />
