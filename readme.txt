@@ -25,7 +25,8 @@ To implement:
 
     -fix and finalize the styles
 
-
+    -put this back ""build": "tsc -b && vite build""
+        do npm run build -> see the ts errors and fix them (not prioritary)
 
 
 
