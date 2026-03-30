@@ -21,9 +21,7 @@ page-flip-2 -> xpmonster-turning-page-in-a-book-419580
 
 To implement:
 
-    -item after morning start is failing
-
-    -fix and finalize the styles
+    -fix and finalize the styles as "needed"
 
     -put this back ""build": "tsc -b && vite build""
         do npm run build -> see the ts errors and fix them (not prioritary)
