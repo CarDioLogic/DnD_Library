@@ -18,6 +18,9 @@ pixelbay (https://pixabay.com/)
 page-flip-1 -> freesound_community-page-flip-47177
 page-flip-2 -> xpmonster-turning-page-in-a-book-419580
 
+api:
+https://studio.apollographql.com/sandbox/explorer - graphQL sandbox
+https://5e-bits.github.io/docs/introduction - docs
 
 To implement:
 
