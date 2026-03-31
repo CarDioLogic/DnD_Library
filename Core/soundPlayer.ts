@@ -16,7 +16,7 @@ export default class SoundPlayer {
 
     if (isMuted) return;
 
-    const audio = new Audio(`/sounds/${fileName}`);
+    const audio = new Audio(`/DnD_Library/sounds/${fileName}`);
     audio.play().catch(console.error);
   }
 
