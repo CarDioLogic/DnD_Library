@@ -1,9 +1,7 @@
 import { useCallback, useEffect, useRef, forwardRef } from "react";
-import Page from "../../flipbook/Page";
-import Icon from "../../general/Icon";
-import { fetchSpellDetails } from "../../../../apiClient/spellsApi";
-import { ABILITIES } from "../../../../Data/Abilities";
-import { formatAbilityModifier, } from "../../../../Core/helpers";
+import Page from "src/components/flipbook/Page";
+import Icon from "src/components/general/Icon";
+import { fetchSpellDetails } from "apiClient/spellsApi";
 
 const GrimoireSpellGeneralDetailsPage = forwardRef(
   ({ spellIndex, pageNumber, currentPage }, ref) => {

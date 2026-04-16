@@ -1,16 +1,16 @@
 import { useEffect, useMemo, useState } from "react";
-import BookFrame from "../../flipbook/BookFrame";
-import BookFrontCover from "../../flipbook/BookFrontCover";
-import BookBackCover from "../../flipbook/BookBackCover";
-import IndexPage from "../../flipbook/IndexPage";
-import Page from "../../flipbook/Page";
-import { MONSTER_TYPES } from "../../../../Data/MonsterTypes";
-import { fetchMonstersByType } from "../../../../apiClient/monsterApi";
+import BookFrame from "src/components/flipbook/BookFrame";
+import BookFrontCover from "src/components/flipbook/BookFrontCover";
+import BookBackCover from "src/components/flipbook/BookBackCover";
+import IndexPage from "src/components/flipbook/IndexPage";
+import Page from "src/components/flipbook/Page";
+import { MONSTER_TYPES } from "data/MonsterTypes";
+import { fetchMonstersByType } from "apiClient/monsterApi";
 import BestiaryMonsterGeneralDetailsPage from "./BestiaryMonsterGeneralDetailsPage";
 import BestiaryMonsterSpecialActionsPage from "./BestiaryMonsterSpecialActionsPage";
 import BestiaryMonsterActionsPage from "./BestiaryMonsterActionsPage";
 import BestiaryMonsterSensesProficienciesResistancesPage from "./BestiaryMonsterSensesProficienciesResistancesPage";
-import Loading from "../../general/Loading";
+import Loading from "src/components/general/Loading";
 
 export default function BestiaryBook() {
   const [monsters, setMonsters] = useState([]);

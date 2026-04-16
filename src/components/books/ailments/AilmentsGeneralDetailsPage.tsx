@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useRef, forwardRef } from "react";
-import Page from "../../flipbook/Page";
-import Icon from "../../general/Icon";
-import { fetchDamageTypeDetails, fetchConditionDetails } from "../../../../apiClient/ailmentsApi";
+import Page from "src/components/flipbook/Page";
+import { fetchDamageTypeDetails, fetchConditionDetails } from "apiClient/ailmentsApi";
 
 const AilmentsGeneralDetailsPage = forwardRef(
   ({ ailmentType = "condition", ailmentIndex, pageNumber, currentPage }, ref) => {

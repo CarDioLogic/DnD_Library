@@ -1,12 +1,12 @@
 import { useEffect, useMemo, useState } from "react";
-import BookFrame from "../../flipbook/BookFrame";
-import BookFrontCover from "../../flipbook/BookFrontCover";
-import BookBackCover from "../../flipbook/BookBackCover";
-import IndexPage from "../../flipbook/IndexPage";
-import Page from "../../flipbook/Page";
-import Icon from "../../general/Icon";
-import Loading from "../../general/Loading";
-import { fetchSpells } from "../../../../apiClient/spellsApi";
+import BookFrame from "src/components/flipbook/BookFrame";
+import BookFrontCover from "src/components/flipbook/BookFrontCover";
+import BookBackCover from "src/components/flipbook/BookBackCover";
+import IndexPage from "src/components/flipbook/IndexPage";
+import Page from "src/components/flipbook/Page";
+import Icon from "src/components/general/Icon";
+import Loading from "src/components/general/Loading";
+import { fetchSpells } from "apiClient/spellsApi";
 import GrimoireSpellGeneralDetailsPage from "./GrimoireSpellGeneralDetailsPage";
 import GrimoireSpellExtraDetailsPage from "./GrimoireSpellExtraDetailsPage";
 

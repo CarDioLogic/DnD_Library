@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { arrowMap } from "../../../Core/arrowMap";
+import { arrowMap } from "core/arrowMap";
 
 export default function InstructionKey({
   keyBind,

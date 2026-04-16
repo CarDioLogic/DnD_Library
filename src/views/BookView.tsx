@@ -1,4 +1,4 @@
-import { AllBooks } from "../components/books/AllBooks";
+import { AllBooks } from "src/components/books/AllBooks";
 
 export default function MonstersBookView({ currentBook }) {
   const BookComponent = AllBooks[currentBook];

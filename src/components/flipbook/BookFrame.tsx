@@ -1,7 +1,7 @@
 import { useEffect, useRef, useCallback, useState, useMemo } from 'react';
 import HTMLFlipBook from 'react-pageflip';
-import SoundPlayer from '../../../Core/soundPlayer';
-import InstructionKey from '../general/InstructionKey';
+import SoundPlayer from 'core/soundPlayer';
+import InstructionKey from 'src/components/general/InstructionKey';
 
 export default function BookFrame({
   children,

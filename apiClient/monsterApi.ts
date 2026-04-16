@@ -1,5 +1,5 @@
 import axios from "axios";
-import { baseGraphqlApiUrl } from "../Core/constants";
+import { baseGraphqlApiUrl } from "../core/constants";
 
 const url = baseGraphqlApiUrl + "/monsters";
 

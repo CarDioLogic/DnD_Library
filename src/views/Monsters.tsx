@@ -1,6 +1,6 @@
-import MonsterTypesAvatars from "../components/monster/MonsterTypesAvatars"
-import MonsterList from "../components/monster/MonsterList"
-import { MONSTER_TYPES } from "../../Data/MonsterTypes";
+import MonsterTypesAvatars from "src/components/monster/MonsterTypesAvatars"
+import MonsterList from "src/components/monster/MonsterList"
+import { MONSTER_TYPES } from "data/MonsterTypes";
 import { useState } from "react"
 
 export default function Monsters() {

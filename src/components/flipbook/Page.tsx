@@ -1,7 +1,7 @@
-import React, { forwardRef, useEffect, useRef, useState } from "react";
-import Loading from "../general/Loading";
+import { forwardRef, useEffect, useRef, useState } from "react";
+import Loading from "src/components/general/Loading";
 import ExtraPageContent from "./ExtraPageContent";
-import Icon from "../general/Icon";
+import Icon from "src/components/general/Icon";
 
 const Page = forwardRef(
   (

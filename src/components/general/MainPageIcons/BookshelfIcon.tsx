@@ -1,8 +1,7 @@
 import { useState } from "react";
-import Icon from "../Icon";
-import { AllBooks } from "../../books/AllBooks";
-import Page from "../../flipbook/Page";
-import BookFrontCover from "../../flipbook/BookFrontCover";
+import Icon from "src/components/general/Icon";
+import { AllBooks } from "src/components/books/AllBooks";
+import BookFrontCover from "src/components/flipbook/BookFrontCover";
 
 export default function BookshelfIcon({ setCurrentBook }) {
   const [bookshelfVisible, setBookshelfVisible] = useState(false);

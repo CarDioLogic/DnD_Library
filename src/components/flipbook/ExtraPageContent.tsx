@@ -1,5 +1,3 @@
-import React from "react";
-
 const ExtraPageContent = ({ isOpen, onClose, children, className = "" }) => {
   if (!isOpen) return null;
 

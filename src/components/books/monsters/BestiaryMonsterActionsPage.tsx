@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useRef, forwardRef } from "react";
-import Page from "../../flipbook/Page";
-import Icon from "../../general/Icon";
-import { fetchMonsterActions } from "../../../../apiClient/monsterApi";
-import { feetToMeters } from "../../../../Core/helpers";
+import Page from "src/components/flipbook/Page";
+import Icon from "src/components/general/Icon";
+import { fetchMonsterActions } from "apiClient/monsterApi";
+import { feetToMeters } from "core/helpers";
 
 const BestiaryMonsterActionsPage = forwardRef(
   ({ monsterIndex, pageNumber, currentPage }, ref) => {

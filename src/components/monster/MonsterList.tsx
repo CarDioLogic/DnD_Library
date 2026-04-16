@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { fetchMonstersByType } from '../../../apiClient/monsterApi';
-import { CREATURE_TO_HABITATS } from '../../../Data/HabitatMonsterMapping';
+import { fetchMonstersByType } from 'apiClient/monsterApi';
+import { CREATURE_TO_HABITATS } from 'data/HabitatMonsterMapping';
 
 export default function MonsterList({ monsterType }) {
     const [monsters, setMonsters] = useState([]);

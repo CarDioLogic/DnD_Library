@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, forwardRef } from "react";
-import Page from "../../flipbook/Page";
-import { fetchEquipmentDetails } from "../../../../apiClient/equipmentsApi";
-import Icon from "../../general/Icon";
+import Page from "src/components/flipbook/Page";
+import { fetchEquipmentDetails } from "apiClient/equipmentsApi";
+import Icon from "src/components/general/Icon";
 
 type Props = {
   equipmentIndex: string;

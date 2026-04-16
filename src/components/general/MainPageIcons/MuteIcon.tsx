@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
-import SoundPlayer from "../../../../Core/soundPlayer";
-import Icon from '../Icon';
+import SoundPlayer from "core/soundPlayer";
+import Icon from 'src/components/general/Icon';
 
 export default function MuteIcon() {
   const soundPlayer = useMemo(() => new SoundPlayer(), []);

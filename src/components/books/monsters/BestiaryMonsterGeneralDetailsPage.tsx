@@ -1,10 +1,10 @@
 import { useCallback, useEffect, useRef, forwardRef } from "react";
-import Page from "../../flipbook/Page";
-import Icon from "../../general/Icon";
-import { fetchMonsterDetails } from "../../../../apiClient/monsterApi";
-import { baseApiUrl } from "../../../../Core/constants";
-import { ABILITIES } from "../../../../Data/Abilities";
-import { formatAbilityModifier, formatArmorClass } from "../../../../Core/helpers";
+import Page from "src/components/flipbook/Page";
+import Icon from "src/components/general/Icon";
+import { fetchMonsterDetails } from "apiClient/monsterApi";
+import { baseApiUrl } from "core/constants";
+import { ABILITIES } from "data/Abilities";
+import { formatAbilityModifier, formatArmorClass } from "core/helpers";
 
 const BestiaryMonsterGeneralDetailsPage = forwardRef(
   ({ monsterIndex, pageNumber, currentPage }, ref) => {
